@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load Initial Dashboard Data
     fetchDashboardData();
+    fetchProfileData(); // Auto sync profile photo/name from DB
 
     // Initialize Drag & Drop for File Upload
     initNoticeDragDrop();
