@@ -1,5 +1,5 @@
 const hostname = window.location.hostname || '127.0.0.1';
-const API_BASE = `http://${hostname}:8000/api`;
+const API_BASE = (hostname === 'localhost' || hostname === '127.0.0.1') ? `http://${hostname}:8000/api` : '/api';
 
 /* ================================
    TEACHER REGISTER — JAVASCRIPT

@@ -5,6 +5,7 @@
    ==================================================== */
 
 const API = (typeof window !== 'undefined' && window.location && window.location.origin && !window.location.origin.startsWith('file')) ? (window.location.origin + '/api') : 'http://127.0.0.1:8000/api';
+const MEDIA_BASE = (typeof window !== 'undefined' && window.location && !window.location.origin.startsWith('file')) ? window.location.origin : 'http://127.0.0.1:8000';
 let studentEmail = '';
 let studentSemester = '';
 let currentMsgTab = 'inbox';
@@ -654,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pic = localStorage.getItem('user_picture') || localStorage.getItem('user_photo');
   const avatarEl = document.getElementById('studentAvatar');
   if (avatarEl && pic) {
-    avatarEl.innerHTML = `<img src="${pic.startsWith('http') ? pic : 'http://127.0.0.1:8000' + pic}" style="width:100%;height:100%;object-fit:cover;">`;
+    avatarEl.innerHTML = `<img src="${pic.startsWith('http') ? pic : 'MEDIA_BASE + pic}" style="width:100%;height:100%;object-fit:cover;">`;
   }
 
   // Update name in header & banner
@@ -958,7 +959,7 @@ function filterStudentTeacherList() {
     grid.innerHTML = filtered.map(t => {
       const initials = t.name ? t.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase() : 'T';
       const picHtml = t.profile_picture
-        ? `<img src="${t.profile_picture.startsWith('http') ? t.profile_picture : 'http://127.0.0.1:8000' + t.profile_picture}" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--border)">`
+        ? `<img src="${t.profile_picture.startsWith('http') ? t.profile_picture : 'MEDIA_BASE + t.profile_picture}" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--border)">`
         : `<div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#30cfd0,#667eea);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff">${initials}</div>`;
 
       return `
@@ -1175,7 +1176,7 @@ async function loadStudentLeaderboard() {
             heightTransform = 'margin-top: 25px;';
           }
 
-          const pic = st.profile_picture ? (st.profile_picture.startsWith('http') ? st.profile_picture : 'http://127.0.0.1:8000' + st.profile_picture) : null;
+          const pic = st.profile_picture ? (st.profile_picture.startsWith('http') ? st.profile_picture : 'MEDIA_BASE + st.profile_picture) : null;
           const initial = st.name.charAt(0).toUpperCase();
 
           return `
@@ -1219,7 +1220,7 @@ async function loadStudentLeaderboard() {
         else if (st.rank === 2) rankColor = '#10b981';
         else if (st.rank === 3) rankColor = '#6366f1';
 
-        const pic = st.profile_picture ? (st.profile_picture.startsWith('http') ? st.profile_picture : 'http://127.0.0.1:8000' + st.profile_picture) : null;
+        const pic = st.profile_picture ? (st.profile_picture.startsWith('http') ? st.profile_picture : 'MEDIA_BASE + st.profile_picture) : null;
         const initial = st.name.charAt(0).toUpperCase();
 
         return `
@@ -1300,7 +1301,7 @@ async function loadStudentProfileForm() {
   const avatarEl = document.getElementById('editProfileAvatarPreview');
   if (avatarEl) {
     if (pic) {
-      avatarEl.innerHTML = `<img src="${pic.startsWith('http') ? pic : 'http://127.0.0.1:8000' + pic}" style="width:100%;height:100%;object-fit:cover;">`;
+      avatarEl.innerHTML = `<img src="${pic.startsWith('http') ? pic : 'MEDIA_BASE + pic}" style="width:100%;height:100%;object-fit:cover;">`;
     } else {
       avatarEl.innerHTML = name.charAt(0).toUpperCase();
     }
@@ -1329,7 +1330,7 @@ async function loadStudentProfileForm() {
       if (u.profile_picture) {
         localStorage.setItem('user_picture', u.profile_picture);
         if (avatarEl) {
-          avatarEl.innerHTML = `<img src="${u.profile_picture.startsWith('http') ? u.profile_picture : 'http://127.0.0.1:8000' + u.profile_picture}" style="width:100%;height:100%;object-fit:cover;">`;
+          avatarEl.innerHTML = `<img src="${u.profile_picture.startsWith('http') ? u.profile_picture : 'MEDIA_BASE + u.profile_picture}" style="width:100%;height:100%;object-fit:cover;">`;
         }
       }
     }
@@ -1411,7 +1412,7 @@ async function saveStudentProfile(event) {
       const avatarEl = document.getElementById('studentAvatar');
       if (avatarEl) {
         if (picUrl) {
-          avatarEl.innerHTML = `<img src="${picUrl.startsWith('http') ? picUrl : 'http://127.0.0.1:8000' + picUrl}" style="width:100%;height:100%;object-fit:cover;">`;
+          avatarEl.innerHTML = `<img src="${picUrl.startsWith('http') ? picUrl : 'MEDIA_BASE + picUrl}" style="width:100%;height:100%;object-fit:cover;">`;
         } else {
           avatarEl.innerText = updatedName.charAt(0).toUpperCase();
         }
@@ -1477,7 +1478,7 @@ async function loadStudentCRList() {
       const renderCRCard = (cr) => {
         const initials = cr.name ? cr.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase() : 'CR';
         const pic = cr.profile_picture
-          ? `<img src="${cr.profile_picture.startsWith('http') ? cr.profile_picture : 'http://127.0.0.1:8000' + cr.profile_picture}" style="width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--border)">`
+          ? `<img src="${cr.profile_picture.startsWith('http') ? cr.profile_picture : 'MEDIA_BASE + cr.profile_picture}" style="width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--border)">`
           : `<div style="width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#6c8fff,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;flex-shrink:0">${initials}</div>`;
         
         return `
@@ -1634,7 +1635,7 @@ async function loadStudentAssignments() {
         const isPast = a.due_date && new Date(a.due_date) < new Date();
         const statusColor = a.is_submitted ? '#10b981' : (isPast ? '#f87171' : '#f59e0b');
         const statusLabel = a.is_submitted ? '✅ Submitted' : (isPast ? '⚠️ï¸ Overdue' : '📌 Pending');
-        const fileBtn = a.file_url ? `<a href="${a.file_url.startsWith('http') ? a.file_url : 'http://127.0.0.1:8000' + a.file_url}" target="_blank" style="font-size:12px;color:#38bdf8;text-decoration:none;display:flex;align-items:center;gap:5px;"><i class="fas fa-file-download"></i> Download File</a>` : '';
+        const fileBtn = a.file_url ? `<a href="${a.file_url.startsWith('http') ? a.file_url : 'MEDIA_BASE + a.file_url}" target="_blank" style="font-size:12px;color:#38bdf8;text-decoration:none;display:flex;align-items:center;gap:5px;"><i class="fas fa-file-download"></i> Download File</a>` : '';
         const driveBtn = a.drive_link ? `<a href="${a.drive_link}" target="_blank" style="font-size:12px;color:#60a5fa;text-decoration:none;display:flex;align-items:center;gap:5px;"><i class="fab fa-google-drive"></i> View Drive</a>` : '';
 
         const submitSection = !a.is_submitted ? `
@@ -1755,7 +1756,7 @@ async function loadStudentNotices() {
             </div>
           </div>
           <div style="font-size:14px;color:var(--text);line-height:1.8;white-space:pre-wrap;">${n.content}</div>
-          ${n.attachment ? `<a href="${n.attachment.startsWith('http') ? n.attachment : 'http://127.0.0.1:8000' + n.attachment}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;color:#38bdf8;text-decoration:none;background:rgba(56,189,248,0.1);padding:6px 12px;border-radius:8px;border:1px solid rgba(56,189,248,0.3);"><i class="fas fa-paperclip"></i> View Attachment</a>` : ''}
+          ${n.attachment ? `<a href="${n.attachment.startsWith('http') ? n.attachment : 'MEDIA_BASE + n.attachment}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;color:#38bdf8;text-decoration:none;background:rgba(56,189,248,0.1);padding:6px 12px;border-radius:8px;border:1px solid rgba(56,189,248,0.3);"><i class="fas fa-paperclip"></i> View Attachment</a>` : ''}
         </div>
       `).join('');
     } else {
@@ -2485,7 +2486,7 @@ async function loadStudentRoutineFiles() {
 
     if (data.status === 'success' && data.data && data.data.length > 0) {
       grid.innerHTML = data.data.map(f => {
-        const fullUrl = f.file_url.startsWith('http') ? f.file_url : 'http://127.0.0.1:8000' + f.file_url;
+        const fullUrl = f.file_url.startsWith('http') ? f.file_url : 'MEDIA_BASE + f.file_url;
         const isImg = f.file_type === 'image' || fullUrl.match(/\.(jpg|jpeg|png|webp|gif)/i);
 
         const previewHtml = isImg

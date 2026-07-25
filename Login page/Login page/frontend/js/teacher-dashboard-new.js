@@ -548,7 +548,8 @@ function normalizeDept(name) {
    (Quiz Builder, Books Manage, CR System, Messages, Complaints)
    ==================================================== */
 
-const API = 'http://127.0.0.1:8000/api';
+const _h = window.location.hostname;
+const API = (_h === 'localhost' || _h === '127.0.0.1') ? `http://${_h}:8000/api` : '/api';
 let teacherEmail = '';
 let quizQuestionCount = 0;
 let teacherMsgTab = 'inbox';

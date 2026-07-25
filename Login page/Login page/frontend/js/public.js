@@ -2,7 +2,9 @@
    PUBLIC HOMEPAGE JS — Jashore Govt. Polytechnic Institute (JPI)
    ==================================================== */
 
-const API = 'http://127.0.0.1:8000/api';
+const _ph = window.location.hostname;
+const API = (_ph === 'localhost' || _ph === '127.0.0.1') ? `http://${_ph}:8000/api` : '/api';
+const MEDIA_BASE = (_ph === 'localhost' || _ph === '127.0.0.1') ? `http://${_ph}:8000` : '';
 let allTeachers = [];
 let selectedDepartment = 'All';
 
