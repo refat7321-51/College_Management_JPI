@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'corsheaders',
     'api',
 ]
@@ -139,6 +141,14 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Cloudinary — cloud media storage (required for Vercel deployment)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'ggsbtbql'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '615487851726473'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', 'tFWaYxsx7hCUoQOHgebFNQE8_ys'),
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
