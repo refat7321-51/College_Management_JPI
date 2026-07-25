@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jashore Government Polytechnic Institute (JPI) — Official Portal</title>
+  <meta name="description" content="Jashore Government Polytechnic Institute (JPI) — Academic Portal, Departments, Faculty Directory, Routine & Student Services">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/public.css">
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-brand" style="text-decoration:none">
+      <div class="nav-logo">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <div class="nav-title">
+        <span class="college-name">Jashore Govt. Polytechnic</span>
+        <span class="college-sub">Institute (JPI)</span>
+      </div>
+    </a>
+
+    <div class="nav-links-center" id="navLinksCenter">
+      <a href="#home" class="nav-link active" onclick="scrollToSection('home',event)">Home</a>
+      <a href="#departments" class="nav-link" onclick="scrollToSection('departments',event)">Departments</a>
+      <a href="#teachers" class="nav-link" onclick="scrollToSection('teachers',event)">Faculty Members</a>
+      <a href="#books-directory" class="nav-link" onclick="scrollToSection('books-directory',event)">Book Directory</a>
+      <a href="#about" class="nav-link" onclick="scrollToSection('about',event)">About JPI</a>
+      <a href="#notices-public" class="nav-link" onclick="scrollToSection('notices-public',event)">Notice Board</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Toggle Theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+      <a href="loginpage1.html" class="btn-login">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </a>
+      <a href="student-register.html" class="btn-register">
+        <i class="fas fa-user-plus"></i> Register
+      </a>
+      <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="scrollToSection('home',event);toggleMobileMenu()"><i class="fas fa-home"></i> Home</a>
+    <a href="#departments" onclick="scrollToSection('departments',event);toggleMobileMenu()"><i class="fas fa-building"></i> Departments</a>
+    <a href="#teachers" onclick="scrollToSection('teachers',event);toggleMobileMenu()"><i class="fas fa-chalkboard-teacher"></i> Faculty Directory</a>
+    <a href="#books-directory" onclick="scrollToSection('books-directory',event);toggleMobileMenu()"><i class="fas fa-book"></i> Book Directory</a>
+    <a href="#about" onclick="scrollToSection('about',event);toggleMobileMenu()"><i class="fas fa-info-circle"></i> About JPI</a>
+    <a href="loginpage1.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+    <a href="student-register.html"><i class="fas fa-user-plus"></i> Registration</a>
+  </div>
+</nav>
+
+<!-- ============ HERO SECTION ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-blob blob1"></div>
+    <div class="hero-blob blob2"></div>
+    <div class="hero-blob blob3"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fas fa-award"></i> Government Polytechnic Institute
+    </div>
+    <h1 class="hero-title">
+      Jashore Government <br>
+      <span class="gradient-text">Polytechnic Institute</span>
+    </h1>
+    <p class="hero-subtitle">
+      Empowering future engineers through state-of-the-art technical education, modern laboratories, and digital academic management.
+    </p>
+    <div class="hero-actions">
+      <a href="loginpage1.html?role=student" class="btn-primary">
+        <i class="fas fa-user-graduate"></i> Join as Student
+      </a>
+      <a href="loginpage1.html" class="btn-secondary">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </a>
+    </div>
+    <div class="hero-stats" id="heroStats">
+      <div class="hero-stat">
+        <div class="stat-num" id="statTeachers">15+</div>
+        <div class="stat-label">Faculty Members</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num" id="statStudents">1200+</div>
+        <div class="stat-label">Enrolled Students</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Technology Depts</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Semesters</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-indicator" onclick="scrollToSection('departments',event)">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPARTMENTS SECTION ============ -->
+<section class="section" id="departments">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-university"></i> Academic Excellence</div>
+      <h2 class="section-title">7 Technology Departments</h2>
+      <p class="section-subtitle">Discover our specialized engineering diploma programs offered at JPI</p>
+    </div>
+
+    <div class="dept-grid">
+      <!-- 1. Civil Technology -->
+      <div class="dept-card" data-dept="civil">
+        <div class="dept-header">
+          <div class="dept-icon" style="background: linear-gradient(135deg, #22c1dc, #1a9fc9);">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="dept-title-group">
+            <h3>Civil Technology</h3>
+            <p class="dept-abbr">CIVIL</p>
+          </div>
+        </div>
+        <div class="dept-info">
+          <p class="dept-desc">Specialized in structural design, surveying, transportation engineering, environmental safety, and modern construction management.</p>
+          <div class="dept-features">
+            <span><i class="fas fa-check"></i> 1st to 8th Semester</span>
+            <span><i class="fas fa-check"></i> Group A &amp; B (1st-3rd)</span>
+            <span><i class="fas fa-check"></i> Survey &amp; Material Testing Labs</span>
+          </div>
+          <div class="skills-label">Skills</div>
+          <div class="dept-skill-tags">
+            <span>AutoCAD</span><span>Surveying</span><span>Material Testing</span><span>Structural Calculation</span><span>Cost Estimating</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Computer Technology -->
+      <div class="dept-card" data-dept="computer">
+        <div class="dept-header">
+          <div class="dept-icon" style="background: linear-gradient(135deg, #8b7cf6, #6a5cf0);">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="dept-title-group">
+            <h3>Computer Science &amp; Technology</h3>
+            <p class="dept-abbr">CST</p>
+          </div>
+        </div>
+        <div class="dept-info">
+          <p class="dept-desc">Focuses on software engineering, computer networking, web development, cybersecurity, database administration, and hardware interfacing.</p>
+          <div class="dept-features">
+            <span><i class="fas fa-check"></i> 1st to 8th Semester</span>
+            <span><i class="fas fa-check"></i> Group A &amp; B (1st-3rd)</span>
+            <span><i class="fas fa-check"></i> Modern High-Speed Computer Labs</span>
+          </div>
+          <div class="skills-label">Skills</div>
+          <div class="dept-skill-tags">
+            <span>Programming (C, Python, Java)</span><span>Web Development</span><span>SQL Databases</span><span>Networking</span><span>Hardware Troubleshooting</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Electrical Technology -->
+      <div class="dept-card" data-dept="electrical">
+        <div class="dept-header">
+          <div class="dept-icon" style="background: linear-gradient(135deg, #ffb84d, #ff9f1c);">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="dept-title-group">
+            <h3>Electrical Technology</h3>
+            <p class="dept-abbr">ELECTRICAL</p>
+          </div>
+        </div>
+        <div class="dept-info">
+          <p class="dept-desc">Covers electrical power generation, transmission, industrial motor automation, control systems, and renewable energy technologies.</p>
+          <div class="dept-features">
+            <span><i class="fas fa-check"></i> 1st to 8th Semester</span>
+            <span><i class="fas fa-check"></i> High Voltage &amp; Wiring Labs</span>
+            <span><i class="fas fa-check"></i> Industrial Automation Training</span>
+          </div>
+          <div class="skills-label">Skills</div>
+          <div class="dept-skill-tags">
+            <span>Circuit Analysis</span><span>Wiring &amp; Installation</span><span>Motor Handling</span><span>PLC Automation</span><span>Safety Standards</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Electronics Technology -->
+      <div class="dept-card" data-dept="electronics">
+        <div class="dept-header">
+          <div class="dept-icon" style="background: linear-gradient(135deg, #c084fc, #a855f7);">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <div class="dept-title-group">
+            <h3>Electronics Technology</h3>
+            <p class="dept-abbr">ELECTRONICS</p>
+          </div>
+        </div>
+        <div class="dept-info">
+          <p class="dept-desc">Provides in-depth training in semiconductor devices, microcontrollers, embedded systems, robotics, and circuit troubleshooting.</p>
+          <div class="dept-features">
+            <span><i class="fas fa-check"></i> 1st to 8th Semester</span>
+            <span><i class="fas fa-check"></i> PCB Design &amp; Robotics Labs</span>
+            <span><i class="fas fa-check"></i> Embedded Systems Focus</span>
+          </div>
+          <div class="skills-label">Skills</div>
+          <div class="dept-skill-tags">
+            <span>Circuit Design</span><span>Microcontroller Programming</span><span>Soldering</span><span>Embedded Systems</span><span>Robotics Basics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Mechanical Technology -->
+      <div class="dept-card" data-dept="mechanical">
+        <div class="dept-header">
+          <div class="dept-icon" style="background: linear-gradient(135deg, #ff9aa8, #ff7a90);">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <div class="dept-title-group">
+            <h3>Mechanical Technology</h3>
+            <p class="dept-abbr">MECHANICAL</p>
+          </div>
+        </div>
+        <div class="dept-info">
+          <p class="dept-desc">Expertise in machine design, thermodynamics, manufacturing processes, CNC machining, and CAD/CAM engineering.</p>
+          <div class="dept-features">
+            <span><i class="fas fa-check"></i> 1st to 8th Semester</span>
+            <span><i class="fas fa-check"></i> Heavy Machine &amp; Foundry Workshop</span>
+            <span><i class="fas fa-check"></i> CAD Design Software Training</span>
+          </div>
+          <div class="skills-label">Skills</div>
+          <div class="dept-skill-tags">
+            <span>CAD/CAM Software</span><span>Machining</span><span>CNC Operation</span><span>Thermodynamics</span><span>Manufacturing Process</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Power Technology -->
+      <div class="dept-card" data-dept="power">
+        <div class="dept-header">
+          <div class="dept-icon" style="background: linear-gradient(135deg, #ff6fa5, #ff4d8d);">
+            <i class="fas fa-charging-station"></i>
+          </div>
+          <div class="dept-title-group">
+            <h3>Power Technology</h3>
+            <p class="dept-abbr">POWER</p>
+          </div>
+        </div>
+        <div class="dept-info">
+          <p class="dept-desc">Specialized in internal combustion engines, power plant engineering, thermal systems, and modern automotive power technologies.</p>
+          <div class="dept-features">
+            <span><i class="fas fa-check"></i> 1st to 8th Semester</span>
+            <span><i class="fas fa-check"></i> Automobile &amp; Engine Testing Labs</span>
+            <span><i class="fas fa-check"></i> Power Station Field Training</span>
+          </div>
+          <div class="skills-label">Skills</div>
+          <div class="dept-skill-tags">
+            <span>Engine Servicing</span><span>Power Plant Operation</span><span>Automotive Systems</span><span>Thermal Management</span><span>Field Testing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Telecommunication Technology -->
+      <div class="dept-card" data-dept="telecom">
+        <div class="dept-header">
+          <div class="dept-icon" style="background: linear-gradient(135deg, #22d3c9, #0e9e94);">
+            <i class="fas fa-broadcast-tower"></i>
+          </div>
+          <div class="dept-title-group">
+            <h3>Telecommunication Technology</h3>
+            <p class="dept-abbr">TELECOM</p>
+          </div>
+        </div>
+        <div class="dept-info">
+          <p class="dept-desc">Focuses on mobile communications, optical fiber transmission, satellite systems, antenna design, and wireless networks.</p>
+          <div class="dept-features">
+            <span><i class="fas fa-check"></i> 1st to 8th Semester</span>
+            <span><i class="fas fa-check"></i> Fiber Optics &amp; Telecom Labs</span>
+            <span><i class="fas fa-check"></i> Wireless Network Architecture</span>
+          </div>
+          <div class="skills-label">Skills</div>
+          <div class="dept-skill-tags">
+            <span>Signal Processing</span><span>Fiber Optic Installation</span><span>Antenna &amp; Microwave</span><span>Data Networking</span><span>Wireless Troubleshooting</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semester Structure -->
+    <div class="semester-info">
+      <h3><i class="fas fa-calendar-alt"></i> Academic Semester Structure (1st to 8th Semester)</h3>
+      <div class="sem-grid">
+        <div class="sem-item active-sem">
+          <span class="sem-num">1st Semester</span>
+          <span class="sem-tag">Group A + B</span>
+        </div>
+        <div class="sem-item active-sem">
+          <span class="sem-num">2nd Semester</span>
+          <span class="sem-tag">Group A + B</span>
+        </div>
+        <div class="sem-item active-sem">
+          <span class="sem-num">3rd Semester</span>
+          <span class="sem-tag">Group A + B</span>
+        </div>
+        <div class="sem-item">
+          <span class="sem-num">4th Semester</span>
+          <span class="sem-tag">Combined</span>
+        </div>
+        <div class="sem-item">
+          <span class="sem-num">5th Semester</span>
+          <span class="sem-tag">Combined</span>
+        </div>
+        <div class="sem-item">
+          <span class="sem-num">6th Semester</span>
+          <span class="sem-tag">Combined</span>
+        </div>
+        <div class="sem-item">
+          <span class="sem-num">7th Semester</span>
+          <span class="sem-tag">Combined</span>
+        </div>
+        <div class="sem-item">
+          <span class="sem-num">8th Semester</span>
+          <span class="sem-tag">Industrial Attachment</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES SECTION ============ -->
+<section class="features-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-magic"></i> Smart Portal Services</div>
+      <h2 class="section-title">Everything You Need for Academic Success</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg,#667eea,#764ba2);">
+          <i class="fas fa-tasks"></i>
+        </div>
+        <h4>Online Assignments</h4>
+        <p>Teachers assign homework with deadlines; students upload submissions and track grades seamlessly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg,#f6d365,#fda085);">
+          <i class="fas fa-question-circle"></i>
+        </div>
+        <h4>Timed Quiz System</h4>
+        <p>Teachers create custom quizzes with strict timers; instant auto-grading and analytics provided.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg,#43e97b,#38f9d7);">
+          <i class="fas fa-bullhorn"></i>
+        </div>
+        <h4>Notice Board</h4>
+        <p>Stay updated with instant notices filtered by department, semester, and urgency levels.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg,#fa709a,#fee140);">
+          <i class="fas fa-calendar-week"></i>
+        </div>
+        <h4>Class Routines</h4>
+        <p>Weekly schedules, shift routine files, and routine slot alerts for students and teachers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg,#4facfe,#00f2fe);">
+          <i class="fas fa-crown"></i>
+        </div>
+        <h4>CR System</h4>
+        <p>Class Representatives (Boys &amp; Girls) appointed per semester and group for streamlined coordination.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg,#a18cd1,#fbc2eb);">
+          <i class="fas fa-book-open"></i>
+        </div>
+        <h4>Semester Book Directory</h4>
+        <p>Access subject codes and publishers for all 8 semesters across all 7 technology departments.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg,#ff9a9e,#fad0c4);">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h4>Direct Messaging</h4>
+        <p>Two-way communication between teachers and students for academic guidance and support.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg,#30cfd0,#667eea);">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h4>Anonymous Complaint Box</h4>
+        <p>Submit feedback with complete anonymity from the public while allowing authorized faculty to review.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEACHERS SECTION ============ -->
+<section class="section" id="teachers">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-chalkboard-teacher"></i> Faculty Members</div>
+      <h2 class="section-title">Our Expert Teachers</h2>
+      <p class="section-subtitle">Browse faculty members filtered automatically by your department or search by name</p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="teacher-filter-wrapper">
+      <div class="filter-group">
+        <label for="teacherDeptFilter"><i class="fas fa-filter"></i> Select Department:</label>
+        <select id="teacherDeptFilter" class="dept-select-input" onchange="onDeptFilterChange(this.value)">
+          <option value="All">All Departments (Show All Teachers)</option>
+          <option value="Computer Science & Technology">Computer Science &amp; Technology (CST)</option>
+          <option value="Civil Technology">Civil Technology</option>
+          <option value="Electrical Technology">Electrical Technology</option>
+          <option value="Electronics Technology">Electronics Technology</option>
+          <option value="Mechanical Technology">Mechanical Technology</option>
+          <option value="Power Technology">Power Technology</option>
+          <option value="Telecommunication Technology">Telecommunication Technology</option>
+        </select>
+      </div>
+
+      <div class="teacher-search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" id="teacherSearch" placeholder="Search teacher by name or subject..." oninput="filterTeachers()">
+      </div>
+    </div>
+
+    <!-- Active Filter Info Banner -->
+    <div id="activeDeptBanner" class="active-dept-banner" style="display: none;">
+      <span><i class="fas fa-info-circle"></i> Showing teachers for: <strong id="activeDeptName">Computer Science &amp; Technology</strong></span>
+      <button onclick="resetDeptFilter()" class="reset-filter-btn"><i class="fas fa-times"></i> Show All Teachers</button>
+    </div>
+
+    <div class="teachers-grid" id="teachersGrid">
+      <div class="loading-teachers">
+        <div class="spinner"></div>
+        <p>Loading faculty directory...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PUBLIC SEMESTER BOOKS DIRECTORY ============ -->
+<section class="section" id="books-directory" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-book-open"></i> Probidhan 2022 Curriculum</div>
+      <h2 class="section-title">Diploma Book List Directory (1st – 8th Semester)</h2>
+      <p class="section-subtitle">Select your Technology Department and Semester to view official BTEB subjects &amp; codes</p>
+    </div>
+
+    <!-- Selection Box (Initial State) -->
+    <div class="book-selection-card">
+      <div class="selection-card-header">
+        <div class="selection-icon">
+          <i class="fas fa-book-reader"></i>
+        </div>
+        <div>
+          <h3>Choose Your Department &amp; Semester</h3>
+          <p>Get complete subject lists, official BTEB subject codes, and total subject count</p>
+        </div>
+      </div>
+
+      <div class="book-filter-form">
+        <div class="form-group-item">
+          <label for="publicBookDeptFilter"><i class="fas fa-graduation-cap"></i> Select Department:</label>
+          <select id="publicBookDeptFilter" class="custom-select-box">
+            <option value="" selected disabled>-- Select Department --</option>
+            <option value="Computer Science & Technology">Computer Science &amp; Technology (CST)</option>
+            <option value="Civil Technology">Civil Technology</option>
+            <option value="Electrical Technology">Electrical Technology</option>
+            <option value="Electronics Technology">Electronics Technology</option>
+            <option value="Mechanical Technology">Mechanical Technology</option>
+            <option value="Power Technology">Power Technology</option>
+            <option value="Telecommunication Technology">Telecommunication Technology</option>
+          </select>
+        </div>
+
+        <div class="form-group-item">
+          <label for="publicBookSemFilter"><i class="fas fa-calendar-alt"></i> Select Semester:</label>
+          <select id="publicBookSemFilter" class="custom-select-box">
+            <option value="" selected disabled>-- Select Semester --</option>
+            <option value="1st Semester">1st Semester</option>
+            <option value="2nd Semester">2nd Semester</option>
+            <option value="3rd Semester">3rd Semester</option>
+            <option value="4th Semester">4th Semester</option>
+            <option value="5th Semester">5th Semester</option>
+            <option value="6th Semester">6th Semester</option>
+            <option value="7th Semester">7th Semester</option>
+            <option value="8th Semester">8th Semester</option>
+          </select>
+        </div>
+
+        <div class="form-group-item btn-group-item">
+          <button onclick="showPublicBookList()" class="btn-primary-fetch">
+            <i class="fas fa-search"></i> View Book List
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Display Container (Initially empty/hidden until user selects) -->
+    <div id="bookResultsContainer" class="book-results-wrapper" style="display: none;">
+      <!-- Dynamic Summary Banner & Table injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT SECTION ============ -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="section-badge"><i class="fas fa-info-circle"></i> About Our Institute</div>
+        <h2 class="section-title">Jashore Government Polytechnic Institute</h2>
+        <p class="about-desc">
+          Established under the Directorate of Technical Education and affiliated with the Bangladesh Technical Education Board (BTEB),
+          Jashore Government Polytechnic Institute (JPI) stands as one of the premier technical education centers in Bangladesh.
+          We offer 4-year Diploma in Engineering degrees across 7 core technological disciplines.
+        </p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Campus Location</strong>
+              <span>Jashore, Khulna Division, Bangladesh</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong>Contact Line</strong>
+              <span>+880-2477-763421</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Official Email</strong>
+              <span>info@jpi.edu.bd</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>Class Shifts</strong>
+              <span>1st Shift: 8:00 AM – 1:30 PM | 2nd Shift: 1:30 PM – 7:00 PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-cards">
+        <div class="about-card" style="background: linear-gradient(135deg,#667eea,#764ba2);">
+          <i class="fas fa-trophy"></i>
+          <h4>Excellence in BTEB Results</h4>
+          <p>Consistently high board examination rankings and pass rates.</p>
+        </div>
+        <div class="about-card" style="background: linear-gradient(135deg,#43e97b,#38f9d7);">
+          <i class="fas fa-flask"></i>
+          <h4>Modern Engineering Labs</h4>
+          <p>Equipped with Network, Microcontroller, AutoCAD, and Machinery Labs.</p>
+        </div>
+        <div class="about-card" style="background: linear-gradient(135deg,#fa709a,#fee140);">
+          <i class="fas fa-users"></i>
+          <h4>Active Student Leadership</h4>
+          <p>CR network and co-curricular technical clubs for holistic development.</p>
+        </div>
+        <div class="about-card" style="background: linear-gradient(135deg,#4facfe,#00f2fe);">
+          <i class="fas fa-certificate"></i>
+          <h4>BTEB Recognized</h4>
+          <p>Fully government accredited technical curriculum and diplomas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOTICES PUBLIC ============ -->
+<section class="notices-section" id="notices-public">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><i class="fas fa-bullhorn"></i> Notice Board</div>
+      <h2 class="section-title">Latest Academic Announcements</h2>
+    </div>
+    <div class="notices-ticker" id="noticesTicker">
+      <div class="ticker-label"><i class="fas fa-bullhorn"></i> Notice Ticker</div>
+      <div class="ticker-track" id="tickerTrack">
+        <span>No recent notices yet — stay tuned for updates!</span>
+      </div>
+    </div>
+    <div class="notices-grid" id="publicNoticesGrid">
+      <div class="no-teachers" style="grid-column:1/-1">
+        <p><i class="fas fa-info-circle"></i> No recent notices at this time. Check back later.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Jashore Govt. Polytechnic Institute</span>
+          </div>
+          <p>Leading technical education institution empowering students with practical engineering skills.</p>
+          <div class="footer-social">
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#departments">Departments</a></li>
+            <li><a href="#teachers">Faculty Directory</a></li>
+            <li><a href="loginpage1.html">Portal Login</a></li>
+            <li><a href="student-register.html">Student Registration</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Portals &amp; Resources</h4>
+          <ul>
+            <li><a href="loginpage1.html">Student Portal</a></li>
+            <li><a href="loginpage1.html">Teacher Portal</a></li>
+            <li><a href="#books-directory">Book Directory</a></li>
+            <li><a href="#notices-public">Notice Board</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2025 Jashore Government Polytechnic Institute (JPI). All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/public.js?v=5.0"></script>
+</body>
+</html>

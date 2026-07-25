@@ -1,0 +1,471 @@
+/* ========================
+   RESET & ROOT VARIABLES
+======================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:          #0f1117;
+  --card:        #181c27;
+  --card2:       #1e2333;
+  --accent:      #6c8fff;
+  --accent2:     #a78bfa;
+  --gold:        #f4c842;
+  --gold2:       #f97316;
+  --student:     #6c8fff;
+  --student2:    #a78bfa;
+  --text:        #eef0f8;
+  --muted:       #7e87a6;
+  --border:      rgba(108, 143, 255, 0.18);
+  --input-bg:    #252b3b;
+  --radius:      16px;
+}
+
+/* ========================
+   LIGHT MODE — FULL OVERRIDES
+======================== */
+html[data-theme="light"] {
+  --bg:       #f0f4ff;
+  --card:     #ffffff;
+  --card2:    #e8eeff;
+  --text:     #111827;
+  --muted:    #4b5563;
+  --border:   rgba(99, 102, 241, 0.25);
+  --input-bg: #eef1ff;
+  --accent:   #4f46e5;
+}
+html[data-theme="light"] body {
+  background: #f0f4ff !important;
+  color: #111827 !important;
+}
+html[data-theme="light"] .card {
+  background: #ffffff !important;
+  border-color: rgba(99,102,241,0.22) !important;
+  color: #111827 !important;
+}
+html[data-theme="light"] .role-circle {
+  background: #e8eeff !important;
+  border-color: rgba(99,102,241,0.3) !important;
+}
+html[data-theme="light"] .role-name,
+html[data-theme="light"] .role-label {
+  color: #4b5563 !important;
+}
+html[data-theme="light"] .page-title {
+  color: #111827 !important;
+}
+html[data-theme="light"] .subtitle {
+  color: #4b5563 !important;
+}
+html[data-theme="light"] .floating-group input,
+html[data-theme="light"] .form-group input,
+html[data-theme="light"] input:not([type="radio"]):not([type="submit"]) {
+  background: #eef1ff !important;
+  color: #111827 !important;
+  border-color: rgba(99,102,241,0.3) !important;
+}
+html[data-theme="light"] .floating-group label {
+  color: #6b7280 !important;
+  background: transparent !important;
+}
+html[data-theme="light"] .floating-group input:focus ~ label,
+html[data-theme="light"] .floating-group input:not(:placeholder-shown) ~ label,
+html[data-theme="light"] .floating-group .pass-wrap input:focus ~ label,
+html[data-theme="light"] .floating-group .pass-wrap input:not(:placeholder-shown) ~ label {
+  background: #ffffff !important;
+  color: var(--accent) !important;
+}
+html[data-theme="light"] .form-group label {
+  color: #4b5563 !important;
+}
+html[data-theme="light"] .form-group select {
+  background: #eef1ff !important;
+  color: #111827 !important;
+  border-color: rgba(99,102,241,0.3) !important;
+}
+html[data-theme="light"] .toast {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border-color: rgba(99,102,241,0.25) !important;
+}
+html[data-theme="light"] .back-btn {
+  color: #6b7280 !important;
+}
+html[data-theme="light"] .reg-title {
+  color: #111827 !important;
+}
+html[data-theme="light"] .reg-subtitle {
+  color: #4b5563 !important;
+}
+html[data-theme="light"] .register-row {
+  color: #4b5563 !important;
+}
+html[data-theme="light"] input:-webkit-autofill,
+html[data-theme="light"] input:-webkit-autofill:hover,
+html[data-theme="light"] input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #eef1ff inset !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+
+/* ========================
+   THEME TOGGLE BUTTON
+======================== */
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  transition: all 0.3s ease;
+  font-size: 20px;
+  line-height: 1;
+}
+.theme-toggle-btn:hover {
+  transform: scale(1.12) rotate(20deg);
+  box-shadow: 0 6px 28px rgba(108,143,255,0.35);
+  border-color: var(--accent);
+}
+
+::selection {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+::-moz-selection {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  padding: 24px 16px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ========================
+   COMPONENTS
+======================== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 44px 40px 36px;
+  width: 440px;
+  max-width: 100%;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.5s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--text);
+  text-align: center;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.page-title span {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+/* ROLE SELECTOR */
+.role-label {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.role-row {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin-bottom: 30px;
+}
+.role-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.role-btn input[type="radio"] { display: none; }
+.role-circle {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 2.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; background: var(--card2);
+  transition: all 0.22s ease;
+  position: relative;
+}
+.role-btn input:checked ~ .role-circle {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(108,143,255,0.18), 0 4px 20px rgba(108,143,255,0.2);
+  transform: scale(1.09);
+}
+.role-name { font-size: 13px; font-weight: 500; color: var(--muted); }
+.role-btn input:checked ~ .role-name { color: var(--text); }
+
+/* ========================
+   FORM GROUPS (STATIC - REG/FORGOT)
+======================== */
+.form-group {
+  margin-bottom: 18px;
+  flex: 1; /* Allows fields to sit side-by-side inside .form-row */
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+
+/* Row to contain side-by-side groups */
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  caret-color: var(--accent);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* ========================
+   FLOATING LABELS (FOR LOGIN)
+======================== */
+.floating-group {
+  position: relative;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.floating-group input {
+  width: 100%;
+  padding: 13px 14px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.floating-group label {
+  position: absolute;
+  left: 14px;
+  top: 13px;
+  font-size: 14px;
+  color: #94a3b8;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 5;
+  background: transparent !important;
+}
+.floating-group input:focus ~ label,
+.floating-group input:not(:placeholder-shown) ~ label,
+.floating-group input:-webkit-autofill ~ label,
+.floating-group .pass-wrap input:focus ~ label,
+.floating-group .pass-wrap input:not(:placeholder-shown) ~ label,
+.floating-group .pass-wrap input:-webkit-autofill ~ label {
+  top: -10px !important;
+  left: 10px !important;
+  font-size: 11px !important;
+  color: var(--accent) !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--card) !important;
+  padding: 0 6px !important;
+  z-index: 10;
+}
+.floating-group input::placeholder {
+  color: transparent !important;
+}
+
+/* ========================
+   FORGOT PASSWORD LINK (POSITIONED RIGHT BELOW BOX)
+======================== */
+.forgot {
+  text-align: right;
+  width: 100%;
+  margin-top: -16px; /* Pulls up closer to the password box */
+  margin-bottom: 24px;
+}
+.forgot a {
+  font-size: 13px;
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.forgot a:hover { opacity: 0.72; }
+
+/* ERROR MESSAGES */
+.err-msg, .inline-error {
+  font-size: 13px;
+  color: #f87171;
+  margin-top: 6px;
+  font-weight: 500;
+  display: none;
+}
+
+/* AUTOFILL FIX */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #252b3b inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* PASSWORD WRAP */
+.pass-wrap { position: relative; width: 100%; }
+.pass-wrap input { padding-right: 42px; }
+.eye-btn {
+  position: absolute; right: 12px; top: 12px;
+  background: none; border: none; color: var(--muted);
+  cursor: pointer; display: flex; align-items: center;
+  z-index: 6;
+}
+
+/* BUTTONS */
+.btn-login {
+  width: 100%; padding: 13px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  border: none; border-radius: 12px;
+  color: #fff; font-weight: 600; font-size: 15px;
+  cursor: pointer; transition: all 0.2s ease;
+  box-shadow: 0 4px 18px rgba(108, 143, 255, 0.28);
+  margin-bottom: 20px;
+}
+.btn-login:hover { transform: translateY(-1px); opacity: 0.9; }
+
+.register-row { text-align: center; font-size: 13px; color: var(--muted); }
+.register-row a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+/* MISC */
+.back-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: none; border: none; color: var(--muted);
+  cursor: pointer; font-size: 13px; margin-bottom: 15px;
+}
+.reg-title { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #fff; text-align: center; }
+.purple { color: var(--accent2); }
+.reg-subtitle { text-align: center; font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+
+.toast {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(60px);
+  background: #1e2333; border: 1px solid var(--border); color: #fff;
+  padding: 10px 24px; border-radius: 30px; font-size: 13px;
+  opacity: 0; transition: all 0.3s ease; z-index: 99;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+.spinner {
+  width: 18px; height: 18px; border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+button.btn-loading { color: transparent !important; pointer-events: none; position: relative; }
+button.btn-loading .spinner { position: absolute; top: 50%; left: 50%; margin: -9px 0 0 -9px; }
+
+/* ============================================================
+   BTEB BOOK DIRECTORY TABLE & SUMMARY BANNER STYLES
+   ============================================================ */
+.book-summary-banner {
+  background: linear-gradient(135deg, rgba(108,143,255,0.12), rgba(167,139,250,0.12));
+  border: 1px solid rgba(108,143,255,0.3); border-radius: 16px;
+  padding: 20px 24px; margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.summary-title { font-size: 16px; font-weight: 800; color: var(--text); }
+.summary-tag {
+  background: var(--gold, #f4c842); color: #1a1d2e; font-size: 12px; font-weight: 800;
+  padding: 4px 14px; border-radius: 20px;
+}
+
+.bteb-table-card {
+  background: var(--card, #181c27); border: 1px solid var(--border);
+  border-radius: 18px; overflow: hidden;
+  box-shadow: 0 12px 32px rgba(10,13,26,0.3);
+}
+.bteb-table {
+  width: 100%; border-collapse: collapse; text-align: left;
+}
+.bteb-table th {
+  background: var(--card2, #1e2333); color: var(--accent, #6c8fff);
+  padding: 16px 20px; font-size: 13px; font-weight: 700;
+  border-bottom: 1.5px solid var(--border); text-transform: uppercase;
+}
+.bteb-table td {
+  padding: 14px 20px; font-size: 14px; color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.bteb-table tr:last-child td { border-bottom: none; }
+.bteb-table tr:hover td { background: rgba(108,143,255,0.04); }
+
+.sl-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(108,143,255,0.12); color: var(--accent, #6c8fff);
+  font-weight: 700; font-size: 13px;
+}
+.code-badge {
+  background: rgba(244,200,66,0.12); border: 1px solid rgba(244,200,66,0.3);
+  color: var(--gold, #f4c842); font-family: monospace; font-size: 13px; font-weight: 700;
+  padding: 4px 10px; border-radius: 6px; display: inline-block;
+}

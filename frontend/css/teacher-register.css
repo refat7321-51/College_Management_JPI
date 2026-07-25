@@ -1,0 +1,449 @@
+/* ================================
+   TEACHER REGISTER — EXTRA STYLES
+================================ */
+
+/* ---- FLOATING LABEL (First/Last Name) ---- */
+.form-group.float-field {
+  position: relative;
+}
+.form-group.float-field .float-wrap {
+  position: relative;
+}
+.form-group.float-field .float-wrap input {
+  padding: 13px 14px;
+  width: 100%;
+  caret-color: #00f2ff;
+}
+.form-group.float-field .float-wrap label {
+  position: absolute;
+  left: 14px;
+  top: 13px;
+  font-size: 14px;
+  color: var(--muted);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 5;
+  background: transparent !important;
+}
+.form-group.float-field .float-wrap input:focus ~ label,
+.form-group.float-field .float-wrap input:not(:placeholder-shown) ~ label,
+.form-group.float-field .float-wrap input:-webkit-autofill ~ label {
+  top: -10px !important;
+  left: 10px !important;
+  font-size: 11px !important;
+  color: var(--gold) !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--card) !important;
+  padding: 0 6px !important;
+  z-index: 10;
+}
+.form-group.float-field .float-wrap input::placeholder {
+  color: transparent !important;
+}
+.form-group.float-field .float-wrap input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(244,200,66,0.12);
+}
+
+/* Custom Light Blue Selection for Teacher */
+*::selection {
+  background-color: #add8e6 !important;
+  color: #000000 !important;
+}
+*::-moz-selection {
+  background-color: #add8e6 !important;
+  color: #000000 !important;
+}
+ 
+.wide-card {
+  width: 500px;
+  padding: 36px 40px 32px;
+}
+ 
+/* Section labels */
+.t-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 22px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+ 
+.t-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(244,200,66,0.2);
+}
+ 
+/* Required star */
+.req {
+  color: #f87171;
+  margin-left: 2px;
+}
+ 
+/* ---- PHONE ROW ---- */
+.phone-row {
+  display: flex;
+}
+ 
+.phone-code {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 13px;
+  background: #1a2035;
+  border: 1px solid var(--border);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+}
+ 
+.phone-code .flag {
+  font-size: 17px;
+}
+ 
+.phone-input {
+  flex: 1;
+  padding: 11px 14px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-left: 1px solid rgba(108,143,255,0.1);
+  border-radius: 0 10px 10px 0;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+ 
+.phone-input::placeholder { color: #49516b; }
+ 
+.phone-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(244,200,66,0.12);
+}
+ 
+/* ---- SELECT ---- */
+.form-group select {
+  width: 100%;
+  padding: 11px 36px 11px 14px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%237e87a6' d='M5 6L0 0h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+ 
+.form-group select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(244,200,66,0.12);
+}
+ 
+.form-group select option {
+  background: #1e2333;
+  color: var(--text);
+}
+ 
+/* ---- INPUT FOCUS GOLD ---- */
+.form-group input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(244,200,66,0.12);
+}
+ 
+/* ---- GENDER RADIO ---- */
+.gender-row {
+  display: flex;
+  gap: 8px;
+}
+ 
+.gender-opt {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  font-size: 13px;
+  color: var(--muted);
+  user-select: none;
+}
+ 
+.gender-opt input[type="radio"] { display: none; }
+ 
+.gender-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #49516b;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+ 
+.gender-opt:has(input:checked) {
+  border-color: var(--gold);
+  background: rgba(244,200,66,0.07);
+  color: var(--text);
+}
+ 
+.gender-opt input:checked ~ .gender-dot {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+ 
+.gender-opt:hover {
+  border-color: rgba(244,200,66,0.4);
+}
+ 
+/* ---- PIN INFO BOX ---- */
+.pin-info-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(244,200,66,0.06);
+  border: 1px solid rgba(244,200,66,0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+ 
+.pin-info-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+ 
+.pin-info-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+ 
+.pin-info-sub {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+ 
+/* ---- PIN BOXES ---- */
+.pin-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 4px;
+}
+ 
+.pin-box {
+  width: 52px;
+  height: 56px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  background: var(--input-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  caret-color: var(--gold);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.1s;
+  letter-spacing: 0;
+}
+ 
+.pin-box:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(244,200,66,0.15);
+  transform: scale(1.06);
+}
+ 
+.pin-box.filled {
+  border-color: rgba(244,200,66,0.5);
+  background: rgba(244,200,66,0.05);
+}
+ 
+/* ---- PASSWORD ---- */
+.pass-wrap {
+  position: relative;
+}
+ 
+.pass-wrap input {
+  padding-right: 42px;
+}
+ 
+.eye-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+ 
+.eye-btn:hover { color: var(--gold); }
+ 
+.pass-strength {
+  margin-top: 7px;
+  height: 3px;
+  border-radius: 3px;
+  background: #252b3b;
+  overflow: hidden;
+}
+ 
+.pass-strength-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 3px;
+  transition: width 0.35s ease, background 0.35s ease;
+}
+ 
+.pass-hint {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+ 
+/* ---- VALIDATION ---- */
+.err-msg {
+  font-size: 11px;
+  color: #f87171;
+  margin-top: 5px;
+  display: none;
+}
+ 
+.form-group.invalid input,
+.form-group.invalid select,
+.form-group.invalid .phone-input {
+  border-color: #f87171;
+  box-shadow: 0 0 0 3px rgba(248,113,113,0.1);
+}
+ 
+.form-group.invalid .err-msg { display: block; }
+
+.form-group.invalid input:focus,
+.form-group.invalid select:focus,
+.form-group.invalid .phone-input:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(248,113,113,0.3);
+}
+ 
+.form-group.invalid .pin-box {
+  border-color: #f87171;
+}
+
+.form-group.invalid .pin-box:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(248,113,113,0.3);
+}
+ 
+/* ---- SUBMIT ---- */
+.btn-submit-teacher {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+  border: none;
+  border-radius: 12px;
+  color: #1a1000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(244,200,66,0.28);
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+ 
+.btn-submit-teacher:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(244,200,66,0.36);
+}
+ 
+.btn-submit-teacher:active { transform: scale(0.98); }
+ 
+/* ---- PIN WRONG MODAL ---- */
+.pin-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,11,18,0.75);
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+}
+ 
+.pin-modal-overlay.open {
+  display: flex;
+}
+ 
+.pin-modal {
+  background: var(--card);
+  border: 1px solid rgba(248,113,113,0.3);
+  border-radius: 20px;
+  padding: 36px 32px;
+  width: 340px;
+  text-align: center;
+  animation: fadeUp 0.35s cubic-bezier(.22,1,.36,1) both;
+}
+ 
+.pin-modal-icon { font-size: 40px; margin-bottom: 14px; }
+ 
+.pin-modal h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f87171;
+  margin-bottom: 10px;
+}
+ 
+.pin-modal p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+ 
+.pin-modal button {
+  padding: 11px 32px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  border: none;
+  border-radius: 10px;
+  color: #1a1000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+ 
+.pin-modal button:hover { opacity: 0.88; }

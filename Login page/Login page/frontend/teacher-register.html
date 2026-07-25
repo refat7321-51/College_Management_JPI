@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Registration</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2.6"/>
+  <link rel="stylesheet" href="css/teacher-register.css?v=2.4"/>
+  <script src="js/theme.js"></script>
+</head>
+
+<body>
+
+  <div class="card wide-card">
+
+    <button class="back-btn" onclick="location.href='loginpage1.html'">&#8592; Back to Login</button>
+
+    <h2 class="reg-title">Teacher <span class="gold">Registration</span></h2>
+    <p class="reg-subtitle">Secure enrollment for verified faculty members</p>
+
+    <!-- OTP Verification -->
+    <div id="otpSection" style="display: none; animation: fadeIn 0.4s ease;">
+      <div class="t-section-label">Email Verification</div>
+      <div id="regTargetEmail"
+        style="font-size: 15px; font-weight: 600; color: #fbbf24; text-align: center; margin-bottom: 20px; letter-spacing: 0.5px;">
+      </div>
+      <p style="font-size: 13px; color: var(--muted); margin-bottom: 20px; text-align: center;">
+        Please enter the 6-digit code sent to your email.
+      </p>
+      <div class="form-group">
+        <label>OTP Code</label>
+        <input type="text" id="regOtp" placeholder="e.g. 123456" maxlength="6" />
+        <div id="regOtpErr" style="color: #ef4444; font-size: 11px; margin-top: 5px; display: none;"></div>
+      </div>
+      <div style="text-align: center; margin-top: -10px; margin-bottom: 20px;">
+        <span style="font-size: 13px; color: var(--muted);">Didn't get code? </span>
+        <a href="#" id="resendOtpLink" onclick="resendOtp(); return false;"
+          style="color: var(--gold); font-size: 13px; text-decoration: none; font-weight: 500;">Resend Code</a>
+      </div>
+      <button type="button" class="btn-submit-teacher" onclick="verifyAndRegisterTeacher()">Verify & Create
+        Account</button>
+      <p style="text-align: center; margin-top: 15px; font-size: 13px;">
+        <a href="#" onclick="cancelOtpTeacher(); return false;" style="color: var(--muted);">Change Email Address</a>
+      </p>
+    </div>
+
+    <form id="teacherForm" onsubmit="handleTeacherRegistration(event)" novalidate autocomplete="off">
+      <!-- Autofill traps to absorb browser autofill -->
+      <div style="width: 0; height: 0; overflow: hidden; position: absolute; left: -9999px;">
+        <input type="email" autocomplete="email" tabindex="-1">
+        <input type="password" autocomplete="current-password" tabindex="-1">
+      </div>
+
+      <div class="t-section-label">Personal Information</div>
+
+      <div class="form-row">
+        <div class="form-group float-field" id="fg-fname">
+          <div class="float-wrap">
+            <input type="text" id="fname" placeholder=" " autocomplete="off" />
+            <label>First Name</label>
+          </div>
+          <span class="err-msg">First name is required</span>
+        </div>
+        <div class="form-group float-field" id="fg-lname">
+          <div class="float-wrap">
+            <input type="text" id="lname" placeholder=" " autocomplete="off" />
+            <label>Last Name</label>
+          </div>
+          <span class="err-msg">Last name is required</span>
+        </div>
+      </div>
+
+      <div class="form-group" id="fg-mobile">
+        <label>Mobile Number</label>
+        <div class="phone-row">
+          <div class="phone-code">
+            <span class="flag">🇧🇩</span>
+            <span>+880</span>
+          </div>
+          <input class="phone-input" type="tel" id="mobile" placeholder="01XXXXXXXXX" maxlength="11" />
+        </div>
+        <span class="err-msg" id="mobile-err">Enter a valid mobile</span>
+      </div>
+
+      <div class="form-group" id="fg-email">
+        <label>Email Address</label>
+        <input type="text" inputmode="email" id="userEmailBox" placeholder="teacher@email.com"
+          autocomplete="new-password" readonly onfocus="this.removeAttribute('readonly');" />
+        <span class="err-msg">Valid email is required</span>
+      </div>
+
+      <div class="form-group" id="fg-dept">
+        <label>Department</label>
+        <select id="dept">
+          <option value="" disabled selected>Select Department</option>
+          <option>Computer Science & Technology</option>
+          <option>Civil Technology</option>
+          <option>Mechanical Technology</option>
+          <option>Electrical Technology</option>
+          <option>Electronics Technology</option>
+          <option>Power Technology</option>
+          <option>Telecommunication Technology</option>
+        </select>
+        <span class="err-msg">Select department</span>
+      </div>
+
+      <div class="form-group" id="fg-gender">
+        <label>Gender</label>
+        <div class="gender-row">
+          <label class="gender-opt">
+            <input type="radio" name="gender" value="male" />
+            <span class="gender-dot"></span> Male
+          </label>
+          <label class="gender-opt">
+            <input type="radio" name="gender" value="female" />
+            <span class="gender-dot"></span> Female
+          </label>
+          <label class="gender-opt">
+            <input type="radio" name="gender" value="other" />
+            <span class="gender-dot"></span> Other
+          </label>
+        </div>
+        <span class="err-msg" id="gender-err">Select gender</span>
+      </div>
+
+      <div class="t-section-label">Admin Verification</div>
+
+      <div class="pin-info-box">
+        <div class="pin-info-icon">🔐</div>
+        <div>
+          <p class="pin-info-title">Master Verification PIN</p>
+          <p class="pin-info-sub">Enter the system validation key provided by the management.</p>
+        </div>
+      </div>
+
+      <div class="form-group" id="fg-pin">
+        <label>6-Digit PIN</label>
+        <div class="pin-row" id="pinDots">
+          <input class="pin-box" type="tel" style="-webkit-text-security: disc;" maxlength="1" id="p0"
+            oninput="pinMove(this,1)" onkeydown="pinBack(event,this,-1)" autocomplete="off" readonly
+            onfocus="this.removeAttribute('readonly');" />
+          <input class="pin-box" type="tel" style="-webkit-text-security: disc;" maxlength="1" id="p1"
+            oninput="pinMove(this,2)" onkeydown="pinBack(event,this,0)" autocomplete="off" readonly
+            onfocus="this.removeAttribute('readonly');" />
+          <input class="pin-box" type="tel" style="-webkit-text-security: disc;" maxlength="1" id="p2"
+            oninput="pinMove(this,3)" onkeydown="pinBack(event,this,1)" autocomplete="off" readonly
+            onfocus="this.removeAttribute('readonly');" />
+          <input class="pin-box" type="tel" style="-webkit-text-security: disc;" maxlength="1" id="p3"
+            oninput="pinMove(this,4)" onkeydown="pinBack(event,this,2)" autocomplete="off" readonly
+            onfocus="this.removeAttribute('readonly');" />
+          <input class="pin-box" type="tel" style="-webkit-text-security: disc;" maxlength="1" id="p4"
+            oninput="pinMove(this,5)" onkeydown="pinBack(event,this,3)" autocomplete="off" readonly
+            onfocus="this.removeAttribute('readonly');" />
+          <input class="pin-box" type="tel" style="-webkit-text-security: disc;" maxlength="1" id="p5"
+            oninput="pinMove(this,-1)" onkeydown="pinBack(event,this,4)" autocomplete="off" readonly
+            onfocus="this.removeAttribute('readonly');" />
+        </div>
+        <span class="err-msg" id="pin-err">Enter full PIN</span>
+      </div>
+
+      <div class="t-section-label">Security</div>
+
+      <div class="form-group" id="fg-pass">
+        <label>New Password</label>
+        <div class="pass-wrap">
+          <input type="password" id="pass" placeholder="Min. 8 characters" oninput="checkStrength(this.value)"
+            autocomplete="new-password" />
+          <button type="button" class="eye-btn" onclick="toggleEye('pass',this)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </button>
+        </div>
+        <div class="pass-strength">
+          <div class="pass-strength-bar" id="strengthBar"></div>
+        </div>
+        <p class="pass-hint" id="passHint">Use letters, numbers & symbols</p>
+        <span class="err-msg">Password too weak</span>
+      </div>
+
+      <div class="form-group" id="fg-cpass">
+        <label>Confirm Password</label>
+        <div class="pass-wrap">
+          <input type="password" id="cpass" placeholder="Re-type password" autocomplete="new-password" />
+          <button type="button" class="eye-btn" onclick="toggleEye('cpass',this)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </button>
+        </div>
+        <span class="err-msg" id="cpass-err">Passwords mismatch</span>
+      </div>
+
+      <button type="submit" class="btn-submit-teacher">Create Teacher Account</button>
+
+    </form>
+
+    <div class="register-row" style="margin-top:16px;">
+      Already have an account? <a href="loginpage1.html">Login</a>
+    </div>
+
+  </div>
+
+  <!-- PIN WRONG MODAL -->
+  <div class="pin-modal-overlay" id="pinModal">
+    <div class="pin-modal">
+      <div class="pin-modal-icon">❌</div>
+      <h3>Invalid Master PIN</h3>
+      <p>The verification key you entered is incorrect. Please contact the administrator for the correct PIN.</p>
+      <button onclick="closeModal()">Try Again</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/script.js?v=3.5"></script>
+  <script src="js/teacher-register.js?v=3.5"></script>
+
+  <!-- Theme Toggle Button -->
+  <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()" title="Switch to Light Mode">☀️</button>
+
+</body>
+
+</html>

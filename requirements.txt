@@ -1,0 +1,31 @@
+# ─────────────────────────────────────────────────────────────
+#  Academic Portal & Management System — Python Dependencies
+#  Install all at once:  pip install -r requirements.txt
+# ─────────────────────────────────────────────────────────────
+
+# Django web framework (core)
+Django>=4.2.0,<5.0
+
+# ASGI server utilities (required by Django)
+asgiref>=3.8.0
+
+# Cross-Origin Resource Sharing (allows frontend JS to call the API)
+django-cors-headers>=4.3.0
+
+# Load environment variables from .env file
+python-dotenv>=1.0.0
+
+# SQL query formatting (used internally by Django)
+sqlparse>=0.5.0
+
+# Timezone data (required on Windows for timezone-aware datetimes)
+tzdata>=2024.1
+
+# Image processing — profile photos, assignment thumbnails, routine images
+Pillow>=10.0.0
+
+# Excel file read/write support (for student data export/import)
+openpyxl>=3.1.0
+
+# Required by openpyxl for XML file handling
+et_xmlfile>=1.1.0

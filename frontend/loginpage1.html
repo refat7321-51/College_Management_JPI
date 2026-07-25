@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>College Management System - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css?v=2.0"/>
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+<div class="card login-card" id="loginCard">
+
+  
+  <!-- STEP 1: Login Form -->
+  <div id="loginStep">
+    <div class="role-label" id="roleLabelText">CHOOSE YOUR ROLE</div>
+    <div class="role-row">
+      <label class="role-btn" onclick="switchRole('teacher', this)">
+        <input type="radio" name="role" value="teacher" checked/>
+        <div class="role-circle">🎓</div>
+        <div class="role-name">TEACHER</div>
+      </label>
+      <label class="role-btn" onclick="switchRole('student', this)">
+        <input type="radio" name="role" value="student"/>
+        <div class="role-circle">📚</div>
+        <div class="role-name">STUDENT</div>
+      </label>
+    </div>
+
+    <h1 class="page-title" id="pageTitle"><span>Teacher</span> Portal</h1>
+    <p class="subtitle" id="pageSubtitle">Secure access for faculty members</p>
+
+    <form id="loginForm" onsubmit="event.preventDefault(); doLogin();" novalidate autocomplete="off">
+      <div class="floating-group" id="fg-email">
+        <input type="text" placeholder=" " id="email" required autocomplete="off"/>
+        <label>Email or Mobile</label>
+        <div class="inline-error" id="email-err">Account not found.</div>
+      </div>
+
+      <div class="floating-group" id="fg-pass">
+        <div class="pass-wrap">
+          <input type="password" placeholder=" " id="pass" required autocomplete="new-password"/>
+          <label>Password</label>
+          <button type="button" class="eye-btn" onclick="toggleEye('pass', this)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <div class="inline-error" id="pass-err">Incorrect password.</div>
+      </div>
+
+      <div class="forgot">
+        <a href="forgot-password.html">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn-login" id="btnLogin">Login to Portal</button>
+    </form>
+
+    <div class="register-row">
+      Don't have an account? <a href="teacher-register.html" id="regLink">Register as Teacher</a>
+    </div>
+  </div>
+
+  <!-- STEP 2: OTP Verification (Teacher only) -->
+  <div id="otpStep" style="display:none; animation: fadeIn 0.4s ease;">
+    <div style="text-align:center; margin-bottom: 10px; font-size: 28px;">🔐</div>
+    <h1 class="page-title"><span>Verify</span> Identity</h1>
+    <p class="subtitle">Enter the 6-digit code sent to your email</p>
+
+    <div id="otpEmailDisplay" style="text-align:center; font-size:14px; font-weight:600; color: var(--accent); margin-bottom:20px; letter-spacing:0.4px;"></div>
+
+    <div class="floating-group">
+      <input type="text" id="loginOtp" placeholder=" " maxlength="6" autocomplete="off"
+             style="text-align:center; font-size:22px; letter-spacing:6px; font-weight:700;"
+             oninput="this.value=this.value.replace(/[^0-9]/g,'')"/>
+      <label>OTP Code</label>
+      <div class="inline-error" id="loginOtpErr" style="display:none;"></div>
+    </div>
+
+    <div style="text-align:center; margin: -8px 0 18px;">
+      <span style="font-size:13px; color:var(--muted);">Didn't receive? </span>
+      <a href="#" id="resendLoginOtp" onclick="resendLoginOTP(); return false;"
+         style="color:var(--accent); font-size:13px; font-weight:500; text-decoration:none;">Resend Code</a>
+    </div>
+
+    <button class="btn-login" id="btnVerifyLoginOtp" onclick="verifyLoginOTP()">Verify & Login</button>
+
+    <p style="text-align:center; margin-top:15px; font-size:13px;">
+      <a href="#" onclick="backToLogin(); return false;" style="color:var(--muted);">← Back to Login</a>
+    </p>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Data pass for JS -->
+<input type="hidden" id="current_role" value="teacher"/>
+
+<script src="js/script.js?v=3.4"></script>
+
+<!-- Teacher Login OTP Logic -->
+<script>
+  let teacherLoginEmail = '';
+
+  // Override doLogin to handle otp_required response
+  const _origDoLogin = doLogin;
+  async function doLogin() {
+    clearErrors();
+
+    const email = document.getElementById('email');
+    const pass  = document.getElementById('pass');
+    const role  = document.getElementById('current_role').value;
+    const btn   = document.getElementById('btnLogin');
+
+    let valid = true;
+    if (!email.value.trim()) {
+      document.getElementById('fg-email').classList.add('invalid');
+      email.classList.add('invalid-input');
+      valid = false;
+    }
+    if (!pass.value.trim()) {
+      document.getElementById('fg-pass').classList.add('invalid');
+      pass.classList.add('invalid-input');
+      valid = false;
+    }
+    if (!valid) return;
+
+    setBtnLoading(btn, true);
+    const hostname = window.location.hostname || '127.0.0.1';
+    const API_BASE = `http://${hostname}:8000/api`;
+
+    try {
+      const res = await fetch(`${API_BASE}/login/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email_or_mobile: email.value.trim(),
+          password: pass.value.trim(),
+          role: role
+        })
+      });
+
+      const data = await res.json();
+      setBtnLoading(btn, false);
+
+      if (data.status === 'otp_required') {
+        // Teacher - show OTP step
+        teacherLoginEmail = data.email;
+        document.getElementById('otpEmailDisplay').textContent = data.email;
+        document.getElementById('loginStep').style.display = 'none';
+        document.getElementById('otpStep').style.display = 'block';
+        document.getElementById('loginOtp').focus();
+        showToast('OTP sent to your email!');
+
+      } else if (data.status === 'success') {
+        // Student - direct login
+        localStorage.setItem('user_name', data.data.first_name + ' ' + data.data.last_name);
+        localStorage.setItem('user_role', data.data.role);
+        localStorage.setItem('user_email', data.data.email);
+        localStorage.setItem('user_roll', data.data.roll || '');
+        localStorage.setItem('user_phone', data.data.mobile || data.data.phone || '');
+        localStorage.setItem('user_photo', data.data.profile_picture || '');
+        localStorage.setItem('user_picture', data.data.profile_picture || '');
+        localStorage.setItem('user_department', data.data.department || '');
+        localStorage.setItem('user_semester', data.data.semester || '');
+        localStorage.setItem('user_shift', data.data.shift || '');
+        localStorage.setItem('user', JSON.stringify(data.data));
+        window.location.href = data.data.role === 'teacher' ? 'teacher-dashboard.html' : 'dashboard.html';
+
+      } else {
+        if (data.message === 'Email not found') {
+          document.getElementById('fg-email').classList.add('invalid');
+          email.classList.add('invalid-input');
+          document.getElementById('email-err').style.display = 'block';
+        } else if (data.message === 'Wrong password') {
+          document.getElementById('fg-pass').classList.add('invalid');
+          pass.classList.add('invalid-input');
+          document.getElementById('pass-err').style.display = 'block';
+        } else {
+          showToast(data.message || 'Login failed!');
+        }
+      }
+    } catch (err) {
+      setBtnLoading(btn, false);
+      showToast('Server error! Please try again.');
+    }
+  }
+
+  async function verifyLoginOTP() {
+    const otpInput = document.getElementById('loginOtp');
+    const otpErr   = document.getElementById('loginOtpErr');
+    const btn      = document.getElementById('btnVerifyLoginOtp');
+    const hostname = window.location.hostname || '127.0.0.1';
+    const API_BASE = `http://${hostname}:8000/api`;
+
+    otpInput.classList.remove('invalid-input');
+    otpErr.style.display = 'none';
+
+    if (otpInput.value.trim().length < 6) {
+      otpInput.classList.add('invalid-input');
+      otpErr.textContent = 'Enter the 6-digit OTP code!';
+      otpErr.style.display = 'block';
+      return;
+    }
+
+    setBtnLoading(btn, true);
+
+    try {
+      const res = await fetch(`${API_BASE}/verify-login-otp/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: teacherLoginEmail, otp: otpInput.value.trim() })
+      });
+
+      const data = await res.json();
+      setBtnLoading(btn, false);
+
+      if (data.status === 'success') {
+        localStorage.setItem('user_name', data.data.first_name + ' ' + data.data.last_name);
+        localStorage.setItem('user_role', data.data.role);
+        localStorage.setItem('user_email', data.data.email);
+        localStorage.setItem('user_photo', data.data.profile_picture || '');
+        window.location.href = 'teacher-dashboard.html';
+      } else {
+        otpInput.classList.add('invalid-input');
+        otpErr.textContent = data.message || 'Incorrect OTP!';
+        otpErr.style.display = 'block';
+      }
+    } catch (err) {
+      setBtnLoading(btn, false);
+      showToast('Verification error! Try again.');
+    }
+  }
+
+  async function resendLoginOTP() {
+    const link = document.getElementById('resendLoginOtp');
+    if (link.dataset.busy === 'true') return;
+    link.dataset.busy = 'true';
+    link.style.opacity = '0.5';
+    let s = 30;
+    const t = setInterval(() => {
+      s--;
+      if (s <= 0) {
+        clearInterval(t);
+        link.textContent = 'Resend Code';
+        link.style.opacity = '1';
+        link.dataset.busy = 'false';
+      } else {
+        link.textContent = `Resend in (${s}s)`;
+      }
+    }, 1000);
+
+    const hostname = window.location.hostname || '127.0.0.1';
+    const API_BASE = `http://${hostname}:8000/api`;
+    try {
+      // Re-trigger login to get new OTP (need password - use cached)
+      showToast('Sending new code...');
+      // Call send-otp with teacher email (reuses forgot-password OTP mechanism)
+      const res = await fetch(`${API_BASE}/send-otp/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: teacherLoginEmail })
+      });
+      const data = await res.json();
+      if (data.status === 'success') showToast('New OTP sent!');
+      else showToast(data.message || 'Failed!');
+    } catch (e) {}
+  }
+
+  function backToLogin() {
+    document.getElementById('otpStep').style.display = 'none';
+    document.getElementById('loginStep').style.display = 'block';
+    document.getElementById('loginOtp').value = '';
+    document.getElementById('loginOtpErr').style.display = 'none';
+  }
+
+  // Auto-select role from URL param ?role=student or ?role=teacher
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlRole = urlParams.get('role');
+    if (urlRole === 'student' || urlRole === 'teacher') {
+      const roleInput = document.querySelector(`input[name="role"][value="${urlRole}"]`);
+      if (roleInput) {
+        roleInput.checked = true;
+        switchRole(urlRole, roleInput.closest('.role-btn'));
+      }
+    }
+  });
+
+  // Enter key on OTP input
+  document.addEventListener('DOMContentLoaded', () => {
+    const otpInput = document.getElementById('loginOtp');
+    if (otpInput) {
+      otpInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') verifyLoginOTP();
+      });
+    }
+  });
+</script>
+
+<!-- Theme Toggle Button -->
+<button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()" title="Switch to Light Mode">☀️</button>
+
+</body>
+</html>
