@@ -1,4 +1,4 @@
-const PROBIDHAN_2022_DATA = {
+﻿const PROBIDHAN_2022_DATA = {
   // COMPUTER SCIENCE & TECHNOLOGY (CST)
   'computer': {
     deptName: 'Computer Science & Technology (Diploma)',
@@ -71,14 +71,14 @@ const PROBIDHAN_2022_DATA = {
       ],
       '8th Semester': [
         { sl: 1, subject: 'Industrial Attachment', code: '28581' },
-        { sl: 2, subject: 'Project Presentation & Defense', code: '—' }
+        { sl: 2, subject: 'Project Presentation & Defense', code: 'â€”' }
       ]
     }
   },
 
   // CIVIL TECHNOLOGY (Technology Code: 64)
   'civil': {
-    deptName: 'Civil Technology (Diploma) — Technology Code: 64',
+    deptName: 'Civil Technology (Diploma) â€” Technology Code: 64',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -150,7 +150,7 @@ const PROBIDHAN_2022_DATA = {
       ],
       '8th Semester': [
         { sl: 1, subject: 'Industrial Attachment', code: '26481' },
-        { sl: 2, subject: 'Project Presentation & Defense', code: '—' }
+        { sl: 2, subject: 'Project Presentation & Defense', code: 'â€”' }
       ]
     }
   },
@@ -224,14 +224,14 @@ const PROBIDHAN_2022_DATA = {
       ],
       '8th Semester': [
         { sl: 1, subject: 'Industrial Management (Attachment)', code: '26781' },
-        { sl: 2, subject: 'Project Presentation & Defense', code: '—' }
+        { sl: 2, subject: 'Project Presentation & Defense', code: 'â€”' }
       ]
     }
   },
 
   // ELECTRONICS TECHNOLOGY (Technology Code: 68)
   'electronics': {
-    deptName: 'Electronics Technology (Diploma) — Technology Code: 68',
+    deptName: 'Electronics Technology (Diploma) â€” Technology Code: 68',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -375,14 +375,14 @@ const PROBIDHAN_2022_DATA = {
       ],
       '8th Semester': [
         { sl: 1, subject: 'Industrial Attachment', code: '27081' },
-        { sl: 2, subject: 'Project Presentation & Defense', code: '—' }
+        { sl: 2, subject: 'Project Presentation & Defense', code: 'â€”' }
       ]
     }
   },
 
   // POWER TECHNOLOGY (Technology Code: 71)
   'power': {
-    deptName: 'Power Technology (Diploma) — Technology Code: 71',
+    deptName: 'Power Technology (Diploma) â€” Technology Code: 71',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -457,7 +457,7 @@ const PROBIDHAN_2022_DATA = {
 
   // TELECOMMUNICATION TECHNOLOGY (Technology Code: 94)
   'telecom': {
-    deptName: 'Telecommunication Technology (Diploma) — Technology Code: 94',
+    deptName: 'Telecommunication Technology (Diploma) â€” Technology Code: 94',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -544,12 +544,12 @@ function normalizeDept(name) {
 }
 
 /* ====================================================
-   TEACHER DASHBOARD — New Features JS
+   TEACHER DASHBOARD â€” New Features JS
    (Quiz Builder, Books Manage, CR System, Messages, Complaints)
    ==================================================== */
 
 const _h = window.location.hostname;
-const API = (_h === 'localhost' || _h === '127.0.0.1') ? `http://${_h}:8000/api` : '/api';
+const TEACHER_API = (_h === 'localhost' || _h === '127.0.0.1') ? `http://${_h}:8000/TEACHER_API` : '/TEACHER_API';
 let teacherEmail = '';
 let quizQuestionCount = 0;
 let teacherMsgTab = 'inbox';
@@ -640,22 +640,22 @@ function addQuizQuestion() {
   div.style.cssText = 'background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px';
   div.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-      <span style="font-size:14px;font-weight:700;color:var(--accent)">প্রশ্ন #${quizQuestionCount}</span>
+      <span style="font-size:14px;font-weight:700;color:var(--accent)">à¦ªà§à¦°à¦¶à§à¦¨ #${quizQuestionCount}</span>
       <button onclick="removeQuizQuestion(${quizQuestionCount})" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:14px"><i class="fas fa-trash-alt"></i></button>
     </div>
-    <input type="text" class="q-text" placeholder="প্রশ্ন লিখুন (বাংলা বা ইংরেজি)..." style="width:100%;padding:10px;background:var(--input-bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;outline:none;margin-bottom:12px">
+    <input type="text" class="q-text" placeholder="à¦ªà§à¦°à¦¶à§à¦¨ à¦²à¦¿à¦–à§à¦¨ (à¦¬à¦¾à¦‚à¦²à¦¾ à¦¬à¦¾ à¦‡à¦‚à¦°à§‡à¦œà¦¿)..." style="width:100%;padding:10px;background:var(--input-bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;outline:none;margin-bottom:12px">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
-      <input type="text" class="q-optA" placeholder="অপশন A" style="padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px">
-      <input type="text" class="q-optB" placeholder="অপশন B" style="padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px">
-      <input type="text" class="q-optC" placeholder="অপশন C" style="padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px">
-      <input type="text" class="q-optD" placeholder="অপশন D" style="padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px">
+      <input type="text" class="q-optA" placeholder="à¦…à¦ªà¦¶à¦¨ A" style="padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px">
+      <input type="text" class="q-optB" placeholder="à¦…à¦ªà¦¶à¦¨ B" style="padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px">
+      <input type="text" class="q-optC" placeholder="à¦…à¦ªà¦¶à¦¨ C" style="padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px">
+      <input type="text" class="q-optD" placeholder="à¦…à¦ªà¦¶à¦¨ D" style="padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px">
     </div>
     <div style="display:flex;gap:14px;align-items:center">
-      <label style="font-size:12px;font-weight:700;color:var(--muted)">সঠিক উত্তর:</label>
+      <label style="font-size:12px;font-weight:700;color:var(--muted)">à¦¸à¦ à¦¿à¦• à¦‰à¦¤à§à¦¤à¦°:</label>
       <select class="q-correct" style="padding:6px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px">
         <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
       </select>
-      <label style="font-size:12px;font-weight:700;color:var(--muted);margin-left:auto">নম্বর:</label>
+      <label style="font-size:12px;font-weight:700;color:var(--muted);margin-left:auto">à¦¨à¦®à§à¦¬à¦°:</label>
       <input type="number" class="q-marks" value="5" style="width:60px;padding:6px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px">
     </div>
   `;
@@ -678,7 +678,7 @@ async function createTeacherQuiz() {
   const end_time = document.getElementById('qzEnd')?.value;
 
   if (!title || !subject || !start_time || !end_time) {
-    alert('দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন।');
+    alert('à¦¦à¦¯à¦¼à¦¾ à¦•à¦°à§‡ à¦¸à¦•à¦² à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦¤à¦¥à§à¦¯ à¦ªà§à¦°à¦¦à¦¾à¦¨ à¦•à¦°à§à¦¨à¥¤');
     return;
   }
 
@@ -708,12 +708,12 @@ async function createTeacherQuiz() {
   });
 
   if (!questions.length) {
-    alert('কমপক্ষে ১টি প্রশ্ন যোগ করুন।');
+    alert('à¦•à¦®à¦ªà¦•à§à¦·à§‡ à§§à¦Ÿà¦¿ à¦ªà§à¦°à¦¶à§à¦¨ à¦¯à§‹à¦— à¦•à¦°à§à¦¨à¥¤');
     return;
   }
 
   try {
-    const res = await fetch(`${API}/quiz/create/`, {
+    const res = await fetch(`${TEACHER_API}/quiz/create/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -726,13 +726,13 @@ async function createTeacherQuiz() {
     });
     const data = await res.json();
     if (data.status === 'success') {
-      alert('✅ কুইজ সফলভাবে তৈরি হয়েছে!');
+      alert('âœ… à¦•à§à¦‡à¦œ à¦¸à¦«à¦²à¦­à¦¾à¦¬à§‡ à¦¤à§ˆà¦°à¦¿ à¦¹à¦¯à¦¼à§‡à¦›à§‡!');
       loadTeacherQuizzes();
     } else {
-      alert(data.message || 'কুইজ তৈরি করতে সমস্যা হয়েছে।');
+      alert(data.message || 'à¦•à§à¦‡à¦œ à¦¤à§ˆà¦°à¦¿ à¦•à¦°à¦¤à§‡ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦¯à¦¼à§‡à¦›à§‡à¥¤');
     }
   } catch (e) {
-    alert('সংযোগ সমস্যা।');
+    alert('à¦¸à¦‚à¦¯à§‹à¦— à¦¸à¦®à¦¸à§à¦¯à¦¾à¥¤');
   }
 }
 
@@ -741,7 +741,7 @@ async function loadTeacherQuizzes() {
   if (!container) return;
 
   try {
-    const res = await fetch(`${API}/quiz/list/?teacher_email=${encodeURIComponent(teacherEmail)}`);
+    const res = await fetch(`${TEACHER_API}/quiz/list/?teacher_email=${encodeURIComponent(teacherEmail)}`);
     const data = await res.json();
 
     if (data.status === 'success' && data.data.length) {
@@ -750,27 +750,27 @@ async function loadTeacherQuizzes() {
           <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
             <div>
               <div style="font-size:16px;font-weight:700">${q.title}</div>
-              <div style="font-size:13px;color:var(--muted)">${q.subject} • ${q.semester} (${q.language})</div>
-              <div style="font-size:12px;color:var(--muted);margin-top:4px">সময়: ${q.duration_minutes} মিনিট | প্রশ্ন: ${q.questions_count} টি | নম্বর: ${q.total_marks}</div>
+              <div style="font-size:13px;color:var(--muted)">${q.subject} â€¢ ${q.semester} (${q.language})</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:4px">à¦¸à¦®à§Ÿ: ${q.duration_minutes} à¦®à¦¿à¦¨à¦¿à¦Ÿ | à¦ªà§à¦°à¦¶à§à¦¨: ${q.questions_count} à¦Ÿà¦¿ | à¦¨à¦®à§à¦¬à¦°: ${q.total_marks}</div>
             </div>
             <div style="display:flex;gap:8px">
-              <button onclick="viewQuizResults(${q.id})" style="padding:7px 14px;background:linear-gradient(135deg,#6c8fff,#a78bfa);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer"><i class="fas fa-poll"></i> রেজাল্ট</button>
+              <button onclick="viewQuizResults(${q.id})" style="padding:7px 14px;background:linear-gradient(135deg,#6c8fff,#a78bfa);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer"><i class="fas fa-poll"></i> à¦°à§‡à¦œà¦¾à¦²à§à¦Ÿ</button>
               <button onclick="deleteQuiz(${q.id})" style="padding:7px 12px;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:8px;font-size:12px;cursor:pointer"><i class="fas fa-trash-alt"></i></button>
             </div>
           </div>
         </div>
       `).join('');
     } else {
-      container.innerHTML = '<div style="color:var(--muted);font-size:13px">কোনো কুইজ নেই।</div>';
+      container.innerHTML = '<div style="color:var(--muted);font-size:13px">à¦•à§‹à¦¨à§‹ à¦•à§à¦‡à¦œ à¦¨à§‡à¦‡à¥¤</div>';
     }
   } catch (e) {
-    container.innerHTML = '<div style="color:var(--muted);font-size:13px">লোড করতে সমস্যা হয়েছে।</div>';
+    container.innerHTML = '<div style="color:var(--muted);font-size:13px">à¦²à§‹à¦¡ à¦•à¦°à¦¤à§‡ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦¯à¦¼à§‡à¦›à§‡à¥¤</div>';
   }
 }
 
 async function viewQuizResults(quizId) {
   try {
-    const res = await fetch(`${API}/quiz/${quizId}/results/`);
+    const res = await fetch(`${TEACHER_API}/quiz/${quizId}/results/`);
     const data = await res.json();
     if (data.status === 'success') {
       // Remove any existing quiz modal first
@@ -819,7 +819,7 @@ async function viewQuizResults(quizId) {
                 <span style="font-size:13px; font-weight:700; color:var(--muted); min-width:20px">${i + 1}.</span>
                 <div>
                   <div style="font-size:14px; font-weight:700; color:var(--text)">${s.student_name}</div>
-                  <div style="font-size:12px; color:var(--muted)">রোল: ${s.roll || '--'}</div>
+                  <div style="font-size:12px; color:var(--muted)">à¦°à§‹à¦²: ${s.roll || '--'}</div>
                 </div>
               </div>
               <div style="text-align:right">
@@ -834,7 +834,7 @@ async function viewQuizResults(quizId) {
         studentsHtml = `
           <div style="text-align:center; padding:32px 0; color:var(--muted);">
             <i class="fas fa-info-circle" style="font-size:24px; margin-bottom:8px; display:block"></i>
-            এখনও কেউ কুইজ সাবমিট করেনি।
+            à¦à¦–à¦¨à¦“ à¦•à§‡à¦‰ à¦•à§à¦‡à¦œ à¦¸à¦¾à¦¬à¦®à¦¿à¦Ÿ à¦•à¦°à§‡à¦¨à¦¿à¥¤
           </div>
         `;
       }
@@ -855,15 +855,15 @@ async function viewQuizResults(quizId) {
       modal.innerHTML = `
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px">
           <div>
-            <h3 style="font-size:18px; font-weight:800; margin:0; color:var(--text)">📊 কুইজ রেজাল্ট</h3>
-            <p style="font-size:13px; color:var(--muted); margin:4px 0 0 0">${data.quiz_title} • মোট অংশগ্রহণ: ${data.total_submissions}</p>
+            <h3 style="font-size:18px; font-weight:800; margin:0; color:var(--text)">ðŸ“Š à¦•à§à¦‡à¦œ à¦°à§‡à¦œà¦¾à¦²à§à¦Ÿ</h3>
+            <p style="font-size:13px; color:var(--muted); margin:4px 0 0 0">${data.quiz_title} â€¢ à¦®à§‹à¦Ÿ à¦…à¦‚à¦¶à¦—à§à¦°à¦¹à¦£: ${data.total_submissions}</p>
           </div>
           <button onclick="document.getElementById('quiz-result-modal-overlay').remove()" style="background:none; border:none; color:var(--muted); font-size:18px; cursor:pointer; padding:4px"><i class="fas fa-times"></i></button>
         </div>
         <div style="max-height:300px; overflow-y:auto; padding-right:4px; margin-bottom:20px">
           ${studentsHtml}
         </div>
-        <button onclick="document.getElementById('quiz-result-modal-overlay').remove()" style="width:100%; padding:11px; background:linear-gradient(135deg,#6c8fff,#a78bfa); color:#fff; border:none; border-radius:10px; font-size:14px; font-weight:800; cursor:pointer; box-shadow:0 4px 12px rgba(108,143,255,0.3)">বন্ধ করুন</button>
+        <button onclick="document.getElementById('quiz-result-modal-overlay').remove()" style="width:100%; padding:11px; background:linear-gradient(135deg,#6c8fff,#a78bfa); color:#fff; border:none; border-radius:10px; font-size:14px; font-weight:800; cursor:pointer; box-shadow:0 4px 12px rgba(108,143,255,0.3)">à¦¬à¦¨à§à¦§ à¦•à¦°à§à¦¨</button>
       `;
 
       overlay.appendChild(modal);
@@ -874,13 +874,13 @@ async function viewQuizResults(quizId) {
         if (e.target === overlay) overlay.remove();
       });
     }
-  } catch (e) { alert('রেজাল্ট লোড করতে সমস্যা হয়েছে।'); }
+  } catch (e) { alert('à¦°à§‡à¦œà¦¾à¦²à§à¦Ÿ à¦²à§‹à¦¡ à¦•à¦°à¦¤à§‡ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦¯à¦¼à§‡à¦›à§‡à¥¤'); }
 }
 
 async function deleteQuiz(quizId) {
-  if (!confirm('আপনি কি এই কুইজটি মুছে ফেলতে চান?')) return;
+  if (!confirm('à¦†à¦ªà¦¨à¦¿ à¦•à¦¿ à¦à¦‡ à¦•à§à¦‡à¦œà¦Ÿà¦¿ à¦®à§à¦›à§‡ à¦«à§‡à¦²à¦¤à§‡ à¦šà¦¾à¦¨?')) return;
   try {
-    await fetch(`${API}/quiz/${quizId}/delete/`, { method: 'POST' });
+    await fetch(`${TEACHER_API}/quiz/${quizId}/delete/`, { method: 'POST' });
     loadTeacherQuizzes();
   } catch (e) {}
 }
@@ -896,10 +896,10 @@ async function addBook() {
   const publisher = document.getElementById('bookPub')?.value?.trim();
   const notes = document.getElementById('bookNotes')?.value?.trim();
 
-  if (!subject_name) { alert('বিষয়ের নাম দিন।'); return; }
+  if (!subject_name) { alert('à¦¬à¦¿à¦·à¦¯à¦¼à§‡à¦° à¦¨à¦¾à¦® à¦¦à¦¿à¦¨à¥¤'); return; }
 
   try {
-    const res = await fetch(`${API}/books/add/`, {
+    const res = await fetch(`${TEACHER_API}/books/add/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ teacher_email: teacherEmail, semester, subject_name, subject_code, author, publisher, notes })
@@ -909,9 +909,9 @@ async function addBook() {
       document.getElementById('bookSubName').value = '';
       document.getElementById('bookCode').value = '';
       loadTeacherBooks();
-      alert('✅ বই যোগ করা হয়েছে!');
+      alert('âœ… à¦¬à¦‡ à¦¯à§‹à¦— à¦•à¦°à¦¾ à¦¹à¦¯à¦¼à§‡à¦›à§‡!');
     }
-  } catch (e) { alert('সমস্যা হয়েছে।'); }
+  } catch (e) { alert('à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦¯à¦¼à§‡à¦›à§‡à¥¤'); }
 }
 
 function loadTeacherBooks(isUserClick) {
@@ -1006,7 +1006,7 @@ function loadTeacherBooks(isUserClick) {
 async function deleteBook(id) {
   if (!confirm('Delete this book entry?')) return;
   try {
-    await fetch(`${API}/books/delete/${id}/`, { method: 'POST' });
+    await fetch(`${TEACHER_API}/books/delete/${id}/`, { method: 'POST' });
     loadTeacherBooks();
   } catch (e) {}
 }
@@ -1047,7 +1047,7 @@ async function loadStudentsForCR() {
   if (!sel) return;
 
   try {
-    const res = await fetch(`${API}/get-students/?department=${encodeURIComponent(dept)}`);
+    const res = await fetch(`${TEACHER_API}/get-students/?department=${encodeURIComponent(dept)}`);
     const data = await res.json();
     if (data.status === 'success') {
       const students = data.data;
@@ -1067,14 +1067,14 @@ async function assignCR() {
   if (!student_id) { alert('Please select a student first.'); return; }
 
   try {
-    const res = await fetch(`${API}/cr/assign/`, {
+    const res = await fetch(`${TEACHER_API}/cr/assign/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ teacher_email: teacherEmail, student_id: parseInt(student_id), semester, group, gender })
     });
     const data = await res.json();
     if (data.status === 'success') {
-      alert(`✅ ${data.message}`);
+      alert(`âœ… ${data.message}`);
       loadTeacherCRs();
     } else {
       alert(data.message || 'Failed to assign CR. Please try again.');
@@ -1089,15 +1089,15 @@ async function loadTeacherCRs() {
   container.innerHTML = '<div style="color:var(--muted);font-size:13px;grid-column:1/-1;">Loading CR roster...</div>';
 
   try {
-    const res = await fetch(`${API}/cr/get/?include_pending=true`);
+    const res = await fetch(`${TEACHER_API}/cr/get/?include_pending=true`);
     const data = await res.json();
 
     if (data.status === 'success' && data.data.length) {
       container.innerHTML = data.data.map(cr => {
         const isPending = !cr.is_approved;
         const statusBadge = isPending
-          ? `<span style="background:rgba(245,158,11,0.15); color:#f59e0b; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">⏳ Pending Approval</span>`
-          : `<span style="background:rgba(0,230,118,0.15); color:#00e676; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">✅ Official CR</span>`;
+          ? `<span style="background:rgba(245,158,11,0.15); color:#f59e0b; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">â³ Pending Approval</span>`
+          : `<span style="background:rgba(0,230,118,0.15); color:#00e676; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">âœ… Official CR</span>`;
 
         const approveBtn = isPending ? `
           <button onclick="approveCR(${cr.id})" style="background:linear-gradient(135deg,#00e676,#00b0ff); color:#1a1d2e; border:none; padding:6px 14px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer;">
@@ -1132,10 +1132,10 @@ async function loadTeacherCRs() {
 async function approveCR(crId) {
   if (!confirm('Approve this student as official Class Representative?')) return;
   try {
-    const res = await fetch(`${API}/cr/approve/${crId}/`, { method: 'POST' });
+    const res = await fetch(`${TEACHER_API}/cr/approve/${crId}/`, { method: 'POST' });
     const data = await res.json();
     if (data.status === 'success') {
-      alert('✅ Student approved as official CR!');
+      alert('âœ… Student approved as official CR!');
       loadTeacherCRs();
     } else {
       alert(data.message || 'Failed to approve CR.');
@@ -1146,9 +1146,9 @@ async function approveCR(crId) {
 }
 
 async function removeCR(crId) {
-  if (!confirm('CR পদ থেকে সরাতে চান?')) return;
+  if (!confirm('CR à¦ªà¦¦ à¦¥à§‡à¦•à§‡ à¦¸à¦°à¦¾à¦¤à§‡ à¦šà¦¾à¦¨?')) return;
   try {
-    await fetch(`${API}/cr/remove/${crId}/`, { method: 'POST' });
+    await fetch(`${TEACHER_API}/cr/remove/${crId}/`, { method: 'POST' });
     loadTeacherCRs();
   } catch (e) {}
 }
@@ -1173,9 +1173,9 @@ async function loadTeacherMessages(box) {
     }
   }
 
-  container.innerHTML = '<div style="color:var(--muted);font-size:13px">লোড হচ্ছে...</div>';
+  container.innerHTML = '<div style="color:var(--muted);font-size:13px">à¦²à§‹à¦¡ à¦¹à¦šà§à¦›à§‡...</div>';
   try {
-    const res = await fetch(`${API}/messages/?email=${encodeURIComponent(teacherEmail)}&box=${box}`);
+    const res = await fetch(`${TEACHER_API}/messages/?email=${encodeURIComponent(teacherEmail)}&box=${box}`);
     const data = await res.json();
 
     if (data.status === 'success' && data.data.length) {
@@ -1185,7 +1185,7 @@ async function loadTeacherMessages(box) {
             <div>
               <span style="font-size:15px;font-weight:700">${m.subject}</span>
               <div style="font-size:12px;color:var(--muted);margin-top:2px">
-                ${box==='inbox'? `প্রেরক: <strong>${m.sender_name}</strong> (Student)` : `প্রাপক: <strong>${m.receiver_name}</strong>`}
+                ${box==='inbox'? `à¦ªà§à¦°à§‡à¦°à¦•: <strong>${m.sender_name}</strong> (Student)` : `à¦ªà§à¦°à¦¾à¦ªà¦•: <strong>${m.receiver_name}</strong>`}
               </div>
             </div>
             <span style="font-size:11px;color:var(--muted)">${m.sent_at}</span>
@@ -1197,13 +1197,13 @@ async function loadTeacherMessages(box) {
             </div>
           `).join('')}
           <div style="display:flex;gap:8px;margin-top:10px">
-            <input type="text" id="tReply-${m.id}" placeholder="উত্তর দিন..." style="flex:1;padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;outline:none">
-            <button onclick="replyFromTeacher(${m.id}, 'tReply-${m.id}')" style="padding:8px 16px;background:linear-gradient(135deg,#6c8fff,#a78bfa);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer">উত্তর পাঠান</button>
+            <input type="text" id="tReply-${m.id}" placeholder="à¦‰à¦¤à§à¦¤à¦° à¦¦à¦¿à¦¨..." style="flex:1;padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;outline:none">
+            <button onclick="replyFromTeacher(${m.id}, 'tReply-${m.id}')" style="padding:8px 16px;background:linear-gradient(135deg,#6c8fff,#a78bfa);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer">à¦‰à¦¤à§à¦¤à¦° à¦ªà¦¾à¦ à¦¾à¦¨</button>
           </div>
         </div>
       `).join('');
     } else {
-      container.innerHTML = '<div style="color:var(--muted);font-size:13px">কোনো মেসেজ নেই।</div>';
+      container.innerHTML = '<div style="color:var(--muted);font-size:13px">à¦•à§‹à¦¨à§‹ à¦®à§‡à¦¸à§‡à¦œ à¦¨à§‡à¦‡à¥¤</div>';
     }
   } catch (e) {}
 }
@@ -1212,7 +1212,7 @@ async function replyFromTeacher(parentId, inputId) {
   const content = document.getElementById(inputId)?.value?.trim();
   if (!content) return;
   try {
-    const res = await fetch(`${API}/messages/reply/`, {
+    const res = await fetch(`${TEACHER_API}/messages/reply/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sender_email: teacherEmail, parent_id: parentId, content })
@@ -1233,9 +1233,9 @@ async function loadTeacherComplaints() {
   if (!container) return;
   const filter = document.getElementById('tComplaintFilter')?.value || 'all';
 
-  container.innerHTML = '<div style="color:var(--muted);font-size:13px">লোড হচ্ছে...</div>';
+  container.innerHTML = '<div style="color:var(--muted);font-size:13px">à¦²à§‹à¦¡ à¦¹à¦šà§à¦›à§‡...</div>';
   try {
-    const res = await fetch(`${API}/complaints/?email=${encodeURIComponent(teacherEmail)}`);
+    const res = await fetch(`${TEACHER_API}/complaints/?email=${encodeURIComponent(teacherEmail)}`);
     const data = await res.json();
 
     if (data.status === 'success' && data.data.length) {
@@ -1248,25 +1248,25 @@ async function loadTeacherComplaints() {
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:8px">
             <div>
               <span style="background:rgba(48,207,208,0.1);color:#30cfd0;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px">${c.category || 'General'}</span>
-              <span style="font-size:13px;font-weight:700;color:var(--accent);margin-left:8px"><i class="fas fa-user"></i> ${c.student_name} (রোল: ${c.student_roll})</span>
+              <span style="font-size:13px;font-weight:700;color:var(--accent);margin-left:8px"><i class="fas fa-user"></i> ${c.student_name} (à¦°à§‹à¦²: ${c.student_roll})</span>
             </div>
             <span style="font-size:11px;color:var(--muted)">${c.submitted_at}</span>
           </div>
           <div style="font-size:14px;color:var(--text);line-height:1.6;margin-bottom:12px;background:var(--card2);padding:12px;border-radius:10px">${c.content}</div>
           ${c.response ? `
             <div style="background:rgba(67,233,123,0.08);border-left:3px solid #43e97b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;margin-top:8px">
-              <strong style="color:#43e97b">আপনার উত্তর:</strong> ${c.response}
+              <strong style="color:#43e97b">à¦†à¦ªà¦¨à¦¾à¦° à¦‰à¦¤à§à¦¤à¦°:</strong> ${c.response}
             </div>
           ` : `
             <div style="display:flex;gap:8px;margin-top:10px">
-              <input type="text" id="cResp-${c.id}" placeholder="অভিযোগের প্রতিক্রিয়া/সমাধান লিখুন..." style="flex:1;padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;outline:none">
-              <button onclick="respondToComplaint(${c.id}, 'cResp-${c.id}')" style="padding:8px 16px;background:linear-gradient(135deg,#30cfd0,#667eea);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer">উত্তর দিন</button>
+              <input type="text" id="cResp-${c.id}" placeholder="à¦…à¦­à¦¿à¦¯à§‹à¦—à§‡à¦° à¦ªà§à¦°à¦¤à¦¿à¦•à§à¦°à¦¿à¦¯à¦¼à¦¾/à¦¸à¦®à¦¾à¦§à¦¾à¦¨ à¦²à¦¿à¦–à§à¦¨..." style="flex:1;padding:8px 12px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;outline:none">
+              <button onclick="respondToComplaint(${c.id}, 'cResp-${c.id}')" style="padding:8px 16px;background:linear-gradient(135deg,#30cfd0,#667eea);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer">à¦‰à¦¤à§à¦¤à¦° à¦¦à¦¿à¦¨</button>
             </div>
           `}
         </div>
       `).join('');
     } else {
-      container.innerHTML = '<div style="color:var(--muted);font-size:13px">কোনো অভিযোগ নেই।</div>';
+      container.innerHTML = '<div style="color:var(--muted);font-size:13px">à¦•à§‹à¦¨à§‹ à¦…à¦­à¦¿à¦¯à§‹à¦— à¦¨à§‡à¦‡à¥¤</div>';
     }
   } catch (e) {}
 }
@@ -1276,7 +1276,7 @@ async function respondToComplaint(complaintId, inputId) {
   if (!responseText) return;
 
   try {
-    const res = await fetch(`${API}/complaints/respond/${complaintId}/`, {
+    const res = await fetch(`${TEACHER_API}/complaints/respond/${complaintId}/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ teacher_email: teacherEmail, response: responseText })
@@ -1293,7 +1293,7 @@ async function respondToComplaint(complaintId, inputId) {
 // ============================================================
 async function checkTeacherBadges() {
   try {
-    const res = await fetch(`${API}/messages/unread/?email=${encodeURIComponent(teacherEmail)}`);
+    const res = await fetch(`${TEACHER_API}/messages/unread/?email=${encodeURIComponent(teacherEmail)}`);
     const data = await res.json();
     const msgBadge = document.getElementById('teacherMsgBadge');
     if (msgBadge && data.status === 'success') {
@@ -1301,7 +1301,7 @@ async function checkTeacherBadges() {
       msgBadge.textContent = data.unread_count;
     }
 
-    const cRes = await fetch(`${API}/complaints/?email=${encodeURIComponent(teacherEmail)}`);
+    const cRes = await fetch(`${TEACHER_API}/complaints/?email=${encodeURIComponent(teacherEmail)}`);
     const cData = await cRes.json();
     const cBadge = document.getElementById('teacherComplaintBadge');
     if (cBadge && cData.status === 'success') {

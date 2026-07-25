@@ -1,4 +1,4 @@
-/**
+﻿/**
  * TEACHER DASHBOARD LOGIC
  */
 
@@ -1030,7 +1030,7 @@ function renderRoutine(routines) {
             <div class="routine-time">${r.time}</div>
             <div class="routine-info">
                 <h4>${r.subject}</h4>
-                <span>Room: ${r.room} • Semester: ${r.semester || '--'}</span>
+                <span>Room: ${r.room} â€¢ Semester: ${r.semester || '--'}</span>
             </div>
         </div>
     `).join('');
@@ -1487,7 +1487,7 @@ async function saveNoticeEdit(e) {
 
         if (result.status === 'success') {
             closeEditNoticeModal();
-            showToast('Notice updated successfully! ✅');
+            showToast('Notice updated successfully! âœ…');
             fetchAllNotices();
             if (typeof fetchDashboardData === 'function') fetchDashboardData();
         } else {
@@ -1498,7 +1498,7 @@ async function saveNoticeEdit(e) {
     }
 }
 
-// Lightbox Logic — single canonical definition
+// Lightbox Logic â€” single canonical definition
 let currentZoom = 1;
 
 function openLightbox(src) {
@@ -1633,13 +1633,13 @@ function setNoticePreset(type) {
     const sem = document.getElementById('noticeTargetSem');
 
     if (type === 'class_off') {
-        if (title) title.value = '🚨 Class Cancelled / Teacher Absent Notice';
+        if (title) title.value = 'ðŸš¨ Class Cancelled / Teacher Absent Notice';
         if (content) content.value = 'Dear Students,\n\nPlease be informed that today\'s class is cancelled due to unavoidable circumstances. A make-up class will be scheduled soon. Thank you.';
     } else if (type === 'rescheduled') {
-        if (title) title.value = '🕒 Class Schedule Change / Rescheduled';
+        if (title) title.value = 'ðŸ•’ Class Schedule Change / Rescheduled';
         if (content) content.value = 'Dear Students,\n\nOur upcoming class schedule has been modified. Please check the updated class routine for new time slots and room numbers.';
     } else if (type === 'exam') {
-        if (title) title.value = '📝 Class Test / Quiz Announcement';
+        if (title) title.value = 'ðŸ“Â Class Test / Quiz Announcement';
         if (content) content.value = 'Dear Students,\n\nA class test / quiz will be held during our next class slot. Please prepare the recent topics covered in class.';
     }
 }
@@ -1740,7 +1740,7 @@ function updateFileName(input) {
     }
 }
 
-// ---- LIGHTBOX duplicate removed — single definition above ----
+// ---- LIGHTBOX duplicate removed â€” single definition above ----
 
 
 /* ==============================================================================
@@ -1801,21 +1801,21 @@ function updateSmartClassAlert(currentClass, nextClass, dayName, upcomingAlert, 
     if (!statusTag || !mainText || !nextText) return;
 
     if (currentClass) {
-        // Class is running right now — ONGOING
+        // Class is running right now â€” ONGOING
         if (alertBanner) alertBanner.style.background = 'linear-gradient(135deg, rgba(0, 230, 118, 0.15), rgba(0, 212, 255, 0.15))';
         if (alertBanner) alertBanner.style.borderColor = 'rgba(0, 230, 118, 0.4)';
-        statusTag.innerHTML = `🟢 CURRENTLY RUNNING CLASS (${currentClass.start_time} - ${currentClass.end_time})`;
+        statusTag.innerHTML = `ðŸŸ¢ CURRENTLY RUNNING CLASS (${currentClass.start_time} - ${currentClass.end_time})`;
         statusTag.style.color = '#00e676';
         mainText.innerHTML = `<span style="color:#00d4ff;">${currentClass.subject_code ? currentClass.subject_code + ' ' : ''}${currentClass.subject}</span> with <strong>${currentClass.teacher_initials || currentClass.teacher_name}</strong> in <span style="color:#ffd700;">${currentClass.room}</span>`;
     } else if (upcomingAlert) {
-        // Class starts within 10 minutes — WARNING ALERT
+        // Class starts within 10 minutes â€” WARNING ALERT
         const cls = upcomingAlert.class;
         if (alertBanner) {
             alertBanner.style.background = 'linear-gradient(135deg, rgba(255, 165, 0, 0.2), rgba(255, 69, 0, 0.15))';
             alertBanner.style.borderColor = 'rgba(255, 165, 0, 0.5)';
             alertBanner.style.animation = 'pulse-alert 2s infinite';
         }
-        statusTag.innerHTML = `⚡ CLASS STARTS IN ${upcomingAlert.minutes_left} MINUTE${upcomingAlert.minutes_left > 1 ? 'S' : ''}!`;
+        statusTag.innerHTML = `âš¡ CLASS STARTS IN ${upcomingAlert.minutes_left} MINUTE${upcomingAlert.minutes_left > 1 ? 'S' : ''}!`;
         statusTag.style.color = '#ff9800';
         mainText.innerHTML = `<span style="color:#ff9800; font-size: 18px;">${cls.subject_code ? cls.subject_code + ' ' : ''}${cls.subject}</span> with <strong>${cls.teacher_initials || cls.teacher_name}</strong> in <span style="color:#ffd700;">${cls.room}</span>`;
     } else {
@@ -1823,7 +1823,7 @@ function updateSmartClassAlert(currentClass, nextClass, dayName, upcomingAlert, 
         if (alertBanner) alertBanner.style.background = 'linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(129, 140, 248, 0.1))';
         if (alertBanner) alertBanner.style.borderColor = 'rgba(0, 212, 255, 0.3)';
         if (alertBanner) alertBanner.style.animation = 'none';
-        statusTag.innerHTML = `â³ NO CLASS RUNNING RIGHT NOW (${dayName})`;
+        statusTag.innerHTML = `Ã¢ÂÂ³ NO CLASS RUNNING RIGHT NOW (${dayName})`;
         statusTag.style.color = '#00d4ff';
         mainText.innerHTML = `Free Time / Self Study Period`;
     }
@@ -1831,11 +1831,11 @@ function updateSmartClassAlert(currentClass, nextClass, dayName, upcomingAlert, 
     if (nextClass) {
         let extraInfo = '';
         if (minutesUntilNext && minutesUntilNext > 0) {
-            extraInfo = ` — in ${minutesUntilNext} min`;
+            extraInfo = ` â€” in ${minutesUntilNext} min`;
         }
         nextText.innerHTML = `<strong>${nextClass.subject}</strong> (${nextClass.teacher_initials}) at ${nextClass.start_time} in ${nextClass.room}${extraInfo}`;
     } else {
-        nextText.innerHTML = `No more classes scheduled today 🎉`;
+        nextText.innerHTML = `No more classes scheduled today ðŸŽ‰`;
     }
 }
 
@@ -1851,7 +1851,7 @@ function renderRoutineMatrix(data) {
             const item = daySlots.find(s => {
                 // Direct match first
                 if (s.start_time === ts.start) return true;
-                // Numeric fuzzy match (Â±20 minutes)
+                // Numeric fuzzy match (Ã‚Â±20 minutes)
                 const stNum = parseInt(s.start_time.replace(':', ''));
                 const tsNum = parseInt(ts.start.replace(':', ''));
                 return Math.abs(stNum - tsNum) <= 20;
@@ -2157,7 +2157,7 @@ function updateDashboardRoutineWidget(data, currentClass) {
         liveHtml = `
             <div style="background: linear-gradient(135deg, rgba(0,230,118,0.15), rgba(0,212,255,0.15)); border: 1px solid #00e676; border-radius: 12px; padding: 12px 16px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between;">
                 <div>
-                    <span style="font-size: 10px; font-weight: 800; color: #00e676; text-transform: uppercase;">🟢 CLASS RUNNING NOW (${currentClass.start_time} - ${currentClass.end_time})</span>
+                    <span style="font-size: 10px; font-weight: 800; color: #00e676; text-transform: uppercase;">ðŸŸ¢ CLASS RUNNING NOW (${currentClass.start_time} - ${currentClass.end_time})</span>
                     <h4 style="font-size: 15px; font-weight: 700; margin: 3px 0 0 0; color: var(--text);">${currentClass.subject}</h4>
                 </div>
                 <span style="background: #00e676; color: #000; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 800;">${currentClass.room}</span>
@@ -2211,7 +2211,7 @@ async function loadTeacherAssignments() {
         if (result.status === 'success' && result.data.length > 0) {
             grid.innerHTML = result.data.map(a => {
                 const fileLinkHtml = a.file_url ? `
-                    <a href="${a.file_url.startsWith('http') ? a.file_url : 'MEDIA_BASE + a.file_url}" target="_blank" style="font-size:12px; color:#00d4ff; text-decoration:none; display:inline-flex; align-items:center; gap:5px; margin-right:12px;">
+                    <a href="${a.file_url.startsWith('http') ? a.file_url : MEDIA_BASE + a.file_url}" target="_blank" style="font-size:12px; color:#00d4ff; text-decoration:none; display:inline-flex; align-items:center; gap:5px; margin-right:12px;">
                         <i class="fas fa-file-download"></i> Attachment File
                     </a>
                 ` : '';
@@ -2233,8 +2233,8 @@ async function loadTeacherAssignments() {
                             <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px; line-height: 1.4;">${a.description || 'No detailed instructions provided.'}</p>
                             
                             <div style="font-size: 11px; color: var(--muted); margin-bottom: 12px;">
-                                <span>🎯 Target: <strong>${a.department}</strong> (${a.semester}, ${a.shift})</span><br>
-                                <span>💯 Total Marks: <strong>${a.total_marks}</strong></span>
+                                <span>ðŸŽ¯ Target: <strong>${a.department}</strong> (${a.semester}, ${a.shift})</span><br>
+                                <span>ðŸ’¯ Total Marks: <strong>${a.total_marks}</strong></span>
                             </div>
 
                             <div style="margin-bottom: 16px;">
@@ -2360,7 +2360,7 @@ async function openViewSubmissionsModal(assignmentId, title) {
 
             tbody.innerHTML = result.data.map(sub => {
                 const fileBtn = sub.file_url ? `
-                    <a href="${sub.file_url.startsWith('http') ? sub.file_url : 'MEDIA_BASE + sub.file_url}" target="_blank" style="background:rgba(0,212,255,0.15); color:#00d4ff; padding:4px 8px; border-radius:6px; font-size:11px; text-decoration:none; font-weight:700;">
+                    <a href="${sub.file_url.startsWith('http') ? sub.file_url : MEDIA_BASE + sub.file_url}" target="_blank" style="background:rgba(0,212,255,0.15); color:#00d4ff; padding:4px 8px; border-radius:6px; font-size:11px; text-decoration:none; font-weight:700;">
                         <i class="fas fa-file-download"></i> File
                     </a>
                 ` : '';
@@ -2533,7 +2533,7 @@ async function createTeacherQuiz() {
         });
         const data = await res.json();
         if (data.status === 'success') {
-            showToast('Quiz created successfully! 🎉');
+            showToast('Quiz created successfully! ðŸŽ‰');
             document.getElementById('qzTitle').value = '';
             document.getElementById('qzSubject').value = '';
             document.getElementById('quizQBuilder').innerHTML = '';
@@ -2562,13 +2562,13 @@ async function loadTeacherQuizzes() {
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px">
                         <div>
                             <div style="font-size:18px; font-weight:800; color:#ffffff; letter-spacing:0.2px;">${q.title ? (q.title.charAt(0).toUpperCase() + q.title.slice(1)) : 'Quiz'}</div>
-                            <div style="font-size:14px; font-weight:700; color:#a78bfa; margin-top:4px;">📚 ${q.subject} • 🎓 ${q.semester} <span style="font-size:12px; opacity:0.8">(${q.language || 'Bangla'})</span></div>
+                            <div style="font-size:14px; font-weight:700; color:#a78bfa; margin-top:4px;">ðŸ“š ${q.subject} â€¢ ðŸŽ“ ${q.semester} <span style="font-size:12px; opacity:0.8">(${q.language || 'Bangla'})</span></div>
                             <div style="font-size:13px; font-weight:600; color:#cbd5e1; margin-top:6px; display:flex; gap:12px; align-items:center;">
                                 <span><i class="fas fa-clock" style="color:#f59e0b"></i> ${q.duration_minutes} Mins</span>
-                                <span>•</span>
+                                <span>â€¢</span>
                                 <span><i class="fas fa-question-circle" style="color:#60a5fa"></i> ${q.questions_count} Questions</span>
-                                <span>•</span>
-                                <span style="color:#34d399; font-weight:800">💯 Marks: ${q.total_marks}</span>
+                                <span>â€¢</span>
+                                <span style="color:#34d399; font-weight:800">ðŸ’¯ Marks: ${q.total_marks}</span>
                             </div>
                         </div>
                         <div style="display:flex; gap:10px">
@@ -2674,8 +2674,8 @@ async function viewQuizResults(quizId) {
             modal.innerHTML = `
                 <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px">
                     <div>
-                        <h3 style="font-size:18px; font-weight:800; margin:0; color:var(--text)">📊 Quiz Results</h3>
-                        <p style="font-size:13px; color:var(--muted); margin:4px 0 0 0">${data.quiz_title} • Total Submissions: ${data.total_submissions}</p>
+                        <h3 style="font-size:18px; font-weight:800; margin:0; color:var(--text)">ðŸ“Š Quiz Results</h3>
+                        <p style="font-size:13px; color:var(--muted); margin:4px 0 0 0">${data.quiz_title} â€¢ Total Submissions: ${data.total_submissions}</p>
                     </div>
                     <button onclick="document.getElementById('quiz-result-modal-overlay').remove()" style="background:none; border:none; color:var(--muted); font-size:18px; cursor:pointer; padding:4px"><i class="fas fa-times"></i></button>
                 </div>
@@ -2723,7 +2723,7 @@ window.viewQuizResults = viewQuizResults;
 window.deleteTeacherQuiz = deleteTeacherQuiz;
 
 /* ============================================================
-   PROBIDHAN 2022 DATASET — TEACHER PANEL
+   PROBIDHAN 2022 DATASET â€” TEACHER PANEL
    Uses shared canonical data from public.js (window.PROBIDHAN_2022_DATA)
 ============================================================ */
 const PROBIDHAN_2022_TEACHER_DATA = (typeof window !== 'undefined' && window.PROBIDHAN_2022_DATA)
@@ -2891,7 +2891,7 @@ async function assignCR() {
     });
     const data = await res.json();
     if (data.status === 'success') {
-      showToast(`✅ ${data.message}`);
+      showToast(`âœ… ${data.message}`);
       loadTeacherCRs();
     } else {
       showToast(data.message || 'Failed to assign CR.', 'error');
@@ -2913,8 +2913,8 @@ async function loadTeacherCRs() {
       container.innerHTML = data.data.map(cr => {
         const isPending = !cr.is_approved;
         const statusBadge = isPending
-          ? `<span style="background:rgba(245,158,11,0.15); color:#f59e0b; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">â³ Pending Approval</span>`
-          : `<span style="background:rgba(0,230,118,0.15); color:#00e676; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">✅ Official CR</span>`;
+          ? `<span style="background:rgba(245,158,11,0.15); color:#f59e0b; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">Ã¢ÂÂ³ Pending Approval</span>`
+          : `<span style="background:rgba(0,230,118,0.15); color:#00e676; font-size:11px; font-weight:800; padding:3px 10px; border-radius:12px;">âœ… Official CR</span>`;
 
         const approveBtn = isPending ? `
           <button onclick="approveCR(${cr.id})" style="background:linear-gradient(135deg,#00e676,#00b0ff); color:#1a1d2e; border:none; padding:6px 14px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer;">
@@ -2952,7 +2952,7 @@ async function approveCR(crId) {
     const res = await fetch(`${API_BASE}/cr/approve/${crId}/`, { method: 'POST' });
     const data = await res.json();
     if (data.status === 'success') {
-      showToast('✅ Student approved as official CR!');
+      showToast('âœ… Student approved as official CR!');
       loadTeacherCRs();
     } else {
       showToast(data.message || 'Failed to approve CR.', 'error');

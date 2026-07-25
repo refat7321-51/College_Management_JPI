@@ -1,5 +1,5 @@
-/* ====================================================
-   STUDENT DASHBOARD — Complete Integrated JS
+﻿/* ====================================================
+   STUDENT DASHBOARD â€” Complete Integrated JS
    Probidhan 2022 Books, Profile Edit, Notice Tracker,
    CR Nomination, Leaderboard & English UI
    ==================================================== */
@@ -15,12 +15,12 @@ let currentAnswers = {};
 let allQuizQuestions = [];
 
 // ====================================================
-// PROBIDHAN 2022 CANONICAL DATASET — BTEB Official (All 7 Departments)
+// PROBIDHAN 2022 CANONICAL DATASET â€” BTEB Official (All 7 Departments)
 // ====================================================
 const PROBIDHAN_2022_DATA = {
-  // â”€â”€â”€ COMPUTER SCIENCE & TECHNOLOGY (Technology Code: 85) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ COMPUTER SCIENCE & TECHNOLOGY (Technology Code: 85) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
   'computer': {
-    deptName: 'Computer Science & Technology — Technology Code: 85 (Probidhan 2022)',
+    deptName: 'Computer Science & Technology â€” Technology Code: 85 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -95,9 +95,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // â”€â”€â”€ CIVIL TECHNOLOGY (Technology Code: 64) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ CIVIL TECHNOLOGY (Technology Code: 64) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
   'civil': {
-    deptName: 'Civil Technology — Technology Code: 64 (Probidhan 2022)',
+    deptName: 'Civil Technology â€” Technology Code: 64 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -174,9 +174,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // â”€â”€â”€ ELECTRICAL TECHNOLOGY (Technology Code: 67) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ ELECTRICAL TECHNOLOGY (Technology Code: 67) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
   'electrical': {
-    deptName: 'Electrical Technology — Technology Code: 67 (Probidhan 2022)',
+    deptName: 'Electrical Technology â€” Technology Code: 67 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -248,9 +248,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // â”€â”€â”€ TELECOMMUNICATION TECHNOLOGY (Technology Code: 94) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ TELECOMMUNICATION TECHNOLOGY (Technology Code: 94) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
   'telecom': {
-    deptName: 'Telecommunication Technology — Technology Code: 94 (Probidhan 2022)',
+    deptName: 'Telecommunication Technology â€” Technology Code: 94 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -322,9 +322,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // â”€â”€â”€ MECHANICAL TECHNOLOGY (Technology Code: 70) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ MECHANICAL TECHNOLOGY (Technology Code: 70) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
   'mechanical': {
-    deptName: 'Mechanical Technology — Technology Code: 70 (Probidhan 2022)',
+    deptName: 'Mechanical Technology â€” Technology Code: 70 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -397,9 +397,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // â”€â”€â”€ POWER TECHNOLOGY (Technology Code: 71) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ POWER TECHNOLOGY (Technology Code: 71) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
   'power': {
-    deptName: 'Power Technology — Technology Code: 71 (Probidhan 2022)',
+    deptName: 'Power Technology â€” Technology Code: 71 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -472,9 +472,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // â”€â”€â”€ ELECTRONICS TECHNOLOGY (Technology Code: 68) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ ELECTRONICS TECHNOLOGY (Technology Code: 68) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
   'electronics': {
-    deptName: 'Electronics Technology — Technology Code: 68 (Probidhan 2022)',
+    deptName: 'Electronics Technology â€” Technology Code: 68 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -634,14 +634,14 @@ window.addEventListener('popstate', (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ── AUTH GUARD ──────────────────────────────────────────────
+  // â”€â”€ AUTH GUARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const role = localStorage.getItem('user_role') || '';
   const emailCheck = localStorage.getItem('user_email') || '';
   if (!emailCheck || (role && role !== 'student')) {
     window.location.href = 'loginpage1.html';
     return;
   }
-  // ────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   const info = JSON.parse(localStorage.getItem('user') || '{}');
   studentEmail = emailCheck || info.email || '';
@@ -655,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pic = localStorage.getItem('user_picture') || localStorage.getItem('user_photo');
   const avatarEl = document.getElementById('studentAvatar');
   if (avatarEl && pic) {
-    avatarEl.innerHTML = `<img src="${pic.startsWith('http') ? pic : 'MEDIA_BASE + pic}" style="width:100%;height:100%;object-fit:cover;">`;
+    avatarEl.innerHTML = `<img src="${pic.startsWith('http') ? pic : MEDIA_BASE + pic}" style="width:100%;height:100%;object-fit:cover;">`;
   }
 
   // Update name in header & banner
@@ -717,7 +717,7 @@ async function loadStudentAcademicStats() {
   const sem   = localStorage.getItem('user_semester')   || '';
   const email = localStorage.getItem('user_email')      || '';
 
-  // Default 0 — will be updated when data arrives
+  // Default 0 â€” will be updated when data arrives
   setCircle('inlineCircleAttendance',   'inlineCircleAttendanceText',   0);
   setCircle('inlineCircleAssignment',   'inlineCircleAssignmentText',   0);
   setCircle('inlineCircleQuiz',         'inlineCircleQuizText',         0);
@@ -769,9 +769,9 @@ async function loadStudentBannerData() {
     if (data.status === 'success' && data.data && data.data.length > 0) {
       const pending = data.data.filter(a => !a.is_submitted);
       if (pending.length > 0 && bannerAssign) {
-        bannerAssign.innerHTML = `🚨 <strong style="color:#f87171">You have ${pending.length} pending assignment${pending.length > 1 ? 's' : ''}!</strong><br>Latest: <em>${pending[0].title}</em> (${pending[0].subject}) — Due: <strong>${pending[0].due_date}</strong>`;
+        bannerAssign.innerHTML = `ðŸš¨ <strong style="color:#f87171">You have ${pending.length} pending assignment${pending.length > 1 ? 's' : ''}!</strong><br>Latest: <em>${pending[0].title}</em> (${pending[0].subject}) â€” Due: <strong>${pending[0].due_date}</strong>`;
       } else if (bannerAssign) {
-        bannerAssign.innerHTML = `🎉 <strong>All assignments completed!</strong> Great job keeping up with your classwork.`;
+        bannerAssign.innerHTML = `ðŸŽ‰ <strong>All assignments completed!</strong> Great job keeping up with your classwork.`;
       }
 
       // Dynamic assignment badge display based on pending unsubmitted assignments
@@ -798,10 +798,10 @@ async function loadStudentBannerData() {
     if (data.status === 'success' && data.data && data.data.length > 0) {
       const latest = data.data[0];
       if (bannerNotice) {
-        bannerNotice.innerHTML = `📢 <strong>${latest.title}</strong><br><span style="font-size:13px;opacity:0.85">${latest.content.slice(0, 110)}${latest.content.length > 110 ? '...' : ''}</span>`;
+        bannerNotice.innerHTML = `ðŸ“¢ <strong>${latest.title}</strong><br><span style="font-size:13px;opacity:0.85">${latest.content.slice(0, 110)}${latest.content.length > 110 ? '...' : ''}</span>`;
       }
     } else if (bannerNotice) {
-      bannerNotice.innerHTML = `â„¹ï¸ No new college notices for your department right now.`;
+      bannerNotice.innerHTML = `Ã¢â€žÂ¹Ã¯Â¸Â No new college notices for your department right now.`;
     }
   } catch (_) {}
 
@@ -813,9 +813,9 @@ async function loadStudentBannerData() {
     if (data.status === 'success' && data.data && data.data.length > 0) {
       const active = data.data.filter(q => q.status === 'active' && !q.is_submitted);
       if (active.length > 0 && bannerQuiz) {
-        bannerQuiz.innerHTML = `🔥 <strong style="color:#f59e0b">${active.length} Active Quiz Available!</strong><br><em>${active[0].title}</em> (${active[0].subject}) — ${active[0].duration_minutes} Mins`;
+        bannerQuiz.innerHTML = `ðŸ”¥ <strong style="color:#f59e0b">${active.length} Active Quiz Available!</strong><br><em>${active[0].title}</em> (${active[0].subject}) â€” ${active[0].duration_minutes} Mins`;
       } else if (bannerQuiz) {
-        bannerQuiz.innerHTML = `✅ No pending active quizzes for your semester right now.`;
+        bannerQuiz.innerHTML = `âœ… No pending active quizzes for your semester right now.`;
       }
     }
   } catch (_) {}
@@ -959,7 +959,7 @@ function filterStudentTeacherList() {
     grid.innerHTML = filtered.map(t => {
       const initials = t.name ? t.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase() : 'T';
       const picHtml = t.profile_picture
-        ? `<img src="${t.profile_picture.startsWith('http') ? t.profile_picture : 'MEDIA_BASE + t.profile_picture}" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--border)">`
+        ? `<img src="${t.profile_picture.startsWith('http') ? t.profile_picture : MEDIA_BASE + t.profile_picture}" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--border)">`
         : `<div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#30cfd0,#667eea);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff">${initials}</div>`;
 
       return `
@@ -1029,7 +1029,7 @@ async function loadDashboardClassSchedule() {
           </div>
         `).join('');
       } else {
-        container.innerHTML = `<div style="text-align:center; padding:20px; color:var(--muted); font-size:13px;">🎉 No classes scheduled for today (${currentDay})! Enjoy your day!</div>`;
+        container.innerHTML = `<div style="text-align:center; padding:20px; color:var(--muted); font-size:13px;">ðŸŽ‰ No classes scheduled for today (${currentDay})! Enjoy your day!</div>`;
       }
     } else {
       container.innerHTML = `<div style="text-align:center; padding:20px; color:var(--muted); font-size:13px;">No class schedule available for today (${currentDay}).</div>`;
@@ -1040,7 +1040,7 @@ async function loadDashboardClassSchedule() {
 }
 
 // ====================================================
-// BOOKS SECTION — PROBIDHAN 2022 DATA INTEGRATION
+// BOOKS SECTION â€” PROBIDHAN 2022 DATA INTEGRATION
 // ====================================================
 function loadStudentBooks(isUserClick) {
   const container = document.getElementById('booksListContainer');
@@ -1051,7 +1051,7 @@ function loadStudentBooks(isUserClick) {
 
   if (!deptVal || !semVal) {
     if (isUserClick) {
-      alert('à¦¦à¦¯à¦¼à¦¾ à¦•à¦°à§‡ Department à¦à¦¬à¦‚ Semester à¦‰à¦­à¦¯à¦¼à¦‡ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦šà¦¨ à¦•à¦°à§à¦¨! (Please select both Department and Semester)');
+      alert('Ã Â¦Â¦Ã Â¦Â¯Ã Â¦Â¼Ã Â¦Â¾ Ã Â¦â€¢Ã Â¦Â°Ã Â§â€¡ Department Ã Â¦ÂÃ Â¦Â¬Ã Â¦â€š Semester Ã Â¦â€°Ã Â¦Â­Ã Â¦Â¯Ã Â¦Â¼Ã Â¦â€¡ Ã Â¦Â¨Ã Â¦Â¿Ã Â¦Â°Ã Â§ÂÃ Â¦Â¬Ã Â¦Â¾Ã Â¦Å¡Ã Â¦Â¨ Ã Â¦â€¢Ã Â¦Â°Ã Â§ÂÃ Â¦Â¨! (Please select both Department and Semester)');
     } else {
       container.innerHTML = `
         <div style="text-align:center;padding:60px 20px;color:var(--muted)">
@@ -1176,12 +1176,12 @@ async function loadStudentLeaderboard() {
             heightTransform = 'margin-top: 25px;';
           }
 
-          const pic = st.profile_picture ? (st.profile_picture.startsWith('http') ? st.profile_picture : 'MEDIA_BASE + st.profile_picture) : null;
+          const pic = st.profile_picture ? (st.profile_picture.startsWith('http') ? st.profile_picture : MEDIA_BASE + st.profile_picture) : null;
           const initial = st.name.charAt(0).toUpperCase();
 
           return `
             <div style="display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 170px; max-width: 220px; ${heightTransform}">
-              ${isRank1 ? '<div style="font-size: 32px; margin-bottom: -10px; z-index: 4;">👑</div>' : ''}
+              ${isRank1 ? '<div style="font-size: 32px; margin-bottom: -10px; z-index: 4;">ðŸ‘‘</div>' : ''}
               
               <!-- Avatar Circle with Rank Badge at Bottom -->
               <div style="position: relative; margin-bottom: 10px;">
@@ -1220,7 +1220,7 @@ async function loadStudentLeaderboard() {
         else if (st.rank === 2) rankColor = '#10b981';
         else if (st.rank === 3) rankColor = '#6366f1';
 
-        const pic = st.profile_picture ? (st.profile_picture.startsWith('http') ? st.profile_picture : 'MEDIA_BASE + st.profile_picture) : null;
+        const pic = st.profile_picture ? (st.profile_picture.startsWith('http') ? st.profile_picture : MEDIA_BASE + st.profile_picture) : null;
         const initial = st.name.charAt(0).toUpperCase();
 
         return `
@@ -1301,7 +1301,7 @@ async function loadStudentProfileForm() {
   const avatarEl = document.getElementById('editProfileAvatarPreview');
   if (avatarEl) {
     if (pic) {
-      avatarEl.innerHTML = `<img src="${pic.startsWith('http') ? pic : 'MEDIA_BASE + pic}" style="width:100%;height:100%;object-fit:cover;">`;
+      avatarEl.innerHTML = `<img src="${pic.startsWith('http') ? pic : MEDIA_BASE + pic}" style="width:100%;height:100%;object-fit:cover;">`;
     } else {
       avatarEl.innerHTML = name.charAt(0).toUpperCase();
     }
@@ -1330,7 +1330,7 @@ async function loadStudentProfileForm() {
       if (u.profile_picture) {
         localStorage.setItem('user_picture', u.profile_picture);
         if (avatarEl) {
-          avatarEl.innerHTML = `<img src="${u.profile_picture.startsWith('http') ? u.profile_picture : 'MEDIA_BASE + u.profile_picture}" style="width:100%;height:100%;object-fit:cover;">`;
+          avatarEl.innerHTML = `<img src="${u.profile_picture.startsWith('http') ? u.profile_picture : MEDIA_BASE + u.profile_picture}" style="width:100%;height:100%;object-fit:cover;">`;
         }
       }
     }
@@ -1412,13 +1412,13 @@ async function saveStudentProfile(event) {
       const avatarEl = document.getElementById('studentAvatar');
       if (avatarEl) {
         if (picUrl) {
-          avatarEl.innerHTML = `<img src="${picUrl.startsWith('http') ? picUrl : 'MEDIA_BASE + picUrl}" style="width:100%;height:100%;object-fit:cover;">`;
+          avatarEl.innerHTML = `<img src="${picUrl.startsWith('http') ? picUrl : MEDIA_BASE + picUrl}" style="width:100%;height:100%;object-fit:cover;">`;
         } else {
           avatarEl.innerText = updatedName.charAt(0).toUpperCase();
         }
       }
 
-      showToastMsg('✅ Profile updated successfully!');
+      showToastMsg('âœ… Profile updated successfully!');
     } else {
       alert(data.message || 'Failed to update profile.');
     }
@@ -1427,7 +1427,7 @@ async function saveStudentProfile(event) {
       btn.innerHTML = ogText;
       btn.disabled = false;
     }
-    showToastMsg('✅ Profile changes saved!');
+    showToastMsg('âœ… Profile changes saved!');
   }
 }
 
@@ -1478,7 +1478,7 @@ async function loadStudentCRList() {
       const renderCRCard = (cr) => {
         const initials = cr.name ? cr.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase() : 'CR';
         const pic = cr.profile_picture
-          ? `<img src="${cr.profile_picture.startsWith('http') ? cr.profile_picture : 'MEDIA_BASE + cr.profile_picture}" style="width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--border)">`
+          ? `<img src="${cr.profile_picture.startsWith('http') ? cr.profile_picture : MEDIA_BASE + cr.profile_picture}" style="width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--border)">`
           : `<div style="width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#6c8fff,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;flex-shrink:0">${initials}</div>`;
         
         return `
@@ -1602,7 +1602,7 @@ async function submitCRNomination(event) {
     if (modalEl) modalEl.style.display = 'none';
 
     if (data.status === 'success') {
-      showToastMsg('✅ CR nomination submitted! Awaiting teacher verification & approval.');
+      showToastMsg('âœ… CR nomination submitted! Awaiting teacher verification & approval.');
       loadStudentCRList();
     } else {
       alert(data.message || 'Error submitting nomination.');
@@ -1610,7 +1610,7 @@ async function submitCRNomination(event) {
   } catch (err) {
     const modalEl = document.getElementById('crNominationModal');
     if (modalEl) modalEl.style.display = 'none';
-    showToastMsg('✅ Nomination sent to teacher panel!');
+    showToastMsg('âœ… Nomination sent to teacher panel!');
   }
 }
 
@@ -1634,8 +1634,8 @@ async function loadStudentAssignments() {
       grid.innerHTML = data.data.map(a => {
         const isPast = a.due_date && new Date(a.due_date) < new Date();
         const statusColor = a.is_submitted ? '#10b981' : (isPast ? '#f87171' : '#f59e0b');
-        const statusLabel = a.is_submitted ? '✅ Submitted' : (isPast ? '⚠️ï¸ Overdue' : '📌 Pending');
-        const fileBtn = a.file_url ? `<a href="${a.file_url.startsWith('http') ? a.file_url : 'MEDIA_BASE + a.file_url}" target="_blank" style="font-size:12px;color:#38bdf8;text-decoration:none;display:flex;align-items:center;gap:5px;"><i class="fas fa-file-download"></i> Download File</a>` : '';
+        const statusLabel = a.is_submitted ? 'âœ… Submitted' : (isPast ? 'âš ï¸Ã¯Â¸Â Overdue' : 'ðŸ“Œ Pending');
+        const fileBtn = a.file_url ? `<a href="${a.file_url.startsWith('http') ? a.file_url : MEDIA_BASE + a.file_url}" target="_blank" style="font-size:12px;color:#38bdf8;text-decoration:none;display:flex;align-items:center;gap:5px;"><i class="fas fa-file-download"></i> Download File</a>` : '';
         const driveBtn = a.drive_link ? `<a href="${a.drive_link}" target="_blank" style="font-size:12px;color:#60a5fa;text-decoration:none;display:flex;align-items:center;gap:5px;"><i class="fab fa-google-drive"></i> View Drive</a>` : '';
 
         const submitSection = !a.is_submitted ? `
@@ -1709,7 +1709,7 @@ async function submitStudentAssignment(assignmentId) {
     const data = await res.json();
 
     if (data.status === 'success') {
-      showToastMsg('✅ Assignment submitted successfully!');
+      showToastMsg('âœ… Assignment submitted successfully!');
       loadStudentAssignments();
       loadStudentAcademicStats();
     } else {
@@ -1732,7 +1732,7 @@ async function loadStudentNotices() {
 
   const dept = localStorage.getItem('user_department') || 'Computer Science & Technology';
   const sem = studentSemester;
-  if (label) label.textContent = `Notices for: ${dept} — ${sem}`;
+  if (label) label.textContent = `Notices for: ${dept} â€” ${sem}`;
 
   try {
     const res = await fetch(`${API}/get-notices/?department=${encodeURIComponent(dept)}&semester=${encodeURIComponent(sem)}`);
@@ -1756,7 +1756,7 @@ async function loadStudentNotices() {
             </div>
           </div>
           <div style="font-size:14px;color:var(--text);line-height:1.8;white-space:pre-wrap;">${n.content}</div>
-          ${n.attachment ? `<a href="${n.attachment.startsWith('http') ? n.attachment : 'MEDIA_BASE + n.attachment}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;color:#38bdf8;text-decoration:none;background:rgba(56,189,248,0.1);padding:6px 12px;border-radius:8px;border:1px solid rgba(56,189,248,0.3);"><i class="fas fa-paperclip"></i> View Attachment</a>` : ''}
+          ${n.attachment ? `<a href="${n.attachment.startsWith('http') ? n.attachment : MEDIA_BASE + n.attachment}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;color:#38bdf8;text-decoration:none;background:rgba(56,189,248,0.1);padding:6px 12px;border-radius:8px;border:1px solid rgba(56,189,248,0.3);"><i class="fas fa-paperclip"></i> View Attachment</a>` : ''}
         </div>
       `).join('');
     } else {
@@ -1801,9 +1801,9 @@ async function loadStudentQuizzes() {
 function renderQuizCard(q) {
   const statusColors = { active: '#43e97b', upcoming: '#f59e0b', ended: '#94a3b8' };
   const statusBadges = {
-    active: `<span style="font-size:12px;font-weight:800;color:#43e97b;background:rgba(67,233,123,0.15);border:1px solid rgba(67,233,123,0.3);padding:4px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:6px">🟢 Active</span>`,
-    upcoming: `<span style="font-size:12px;font-weight:800;color:#facc15;background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.35);padding:4px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:6px">⏰ Upcoming</span>`,
-    ended: `<span style="font-size:12px;font-weight:800;color:#94a3b8;background:rgba(148,163,184,0.15);border:1px solid rgba(148,163,184,0.3);padding:4px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:6px">⚪ Ended</span>`
+    active: `<span style="font-size:12px;font-weight:800;color:#43e97b;background:rgba(67,233,123,0.15);border:1px solid rgba(67,233,123,0.3);padding:4px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:6px">ðŸŸ¢ Active</span>`,
+    upcoming: `<span style="font-size:12px;font-weight:800;color:#facc15;background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.35);padding:4px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:6px">â° Upcoming</span>`,
+    ended: `<span style="font-size:12px;font-weight:800;color:#94a3b8;background:rgba(148,163,184,0.15);border:1px solid rgba(148,163,184,0.3);padding:4px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:6px">âšª Ended</span>`
   };
 
   let actionBtn = '';
@@ -1825,14 +1825,14 @@ function renderQuizCard(q) {
           ${statusBadges[q.status] || `<span style="font-size:12px;font-weight:800;color:#94a3b8;background:rgba(255,255,255,0.08);padding:4px 14px;border-radius:20px">${q.status}</span>`}
           <div style="font-size:20px;font-weight:800;margin-top:10px;color:#ffffff;letter-spacing:0.3px;">${titleFormatted}</div>
           <div style="font-size:14px;font-weight:700;color:#a78bfa;margin-top:4px;display:flex;align-items:center;gap:6px">
-            <span>📚 ${q.subject || 'General'}</span>
-            <span style="opacity:0.5">•</span>
-            <span>🎓 ${q.semester || 'All Semesters'}</span>
+            <span>ðŸ“š ${q.subject || 'General'}</span>
+            <span style="opacity:0.5">â€¢</span>
+            <span>ðŸŽ“ ${q.semester || 'All Semesters'}</span>
           </div>
         </div>
         <div style="text-align:right;background:rgba(255,255,255,0.04);padding:10px 16px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
           <div style="font-size:13px;font-weight:700;color:#e2e8f0;"><i class="fas fa-question-circle" style="color:#60a5fa"></i> ${q.questions_count || 0} Questions &bull; <i class="fas fa-hourglass-half" style="color:#f59e0b"></i> ${q.duration_minutes || 15} Mins</div>
-          <div style="font-size:13px;font-weight:800;color:#34d399;margin-top:4px;">💯 Total Marks: ${q.total_marks || 0}</div>
+          <div style="font-size:13px;font-weight:800;color:#34d399;margin-top:4px;">ðŸ’¯ Total Marks: ${q.total_marks || 0}</div>
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);">
@@ -1846,7 +1846,7 @@ function renderQuizCard(q) {
 }
 
 // ============================================================
-// QUIZ FUNCTIONS — Complete Rewrite (Bulletproof)
+// QUIZ FUNCTIONS â€” Complete Rewrite (Bulletproof)
 // ============================================================
 
 async function startQuiz(quizId) {
@@ -1903,7 +1903,7 @@ async function startQuiz(quizId) {
     if (data.status !== 'success') {
       modal.style.display = 'none';
       document.body.style.overflow = '';
-      alert('❌ ' + (data.message || 'Could not load quiz. Please try again.'));
+      alert('âŒ ' + (data.message || 'Could not load quiz. Please try again.'));
       return;
     }
 
@@ -1914,7 +1914,7 @@ async function startQuiz(quizId) {
 
     // Update modal header
     if (titleEl)   titleEl.textContent   = quiz.title || 'Quiz';
-    if (subjectEl) subjectEl.textContent = '📚 ' + (quiz.subject || '') + ' — ' + (quiz.semester || '');
+    if (subjectEl) subjectEl.textContent = 'ðŸ“š ' + (quiz.subject || '') + ' â€” ' + (quiz.semester || '');
     if (progressEl) progressEl.textContent = '0 / ' + allQuizQuestions.length;
 
     // Render questions
@@ -1928,7 +1928,7 @@ async function startQuiz(quizId) {
     console.error('[QUIZ] Error:', err);
     modal.style.display = 'none';
     document.body.style.overflow = '';
-    alert('❌ Failed to load quiz: ' + err.message + '\n\nMake sure the server is running and try again.');
+    alert('âŒ Failed to load quiz: ' + err.message + '\n\nMake sure the server is running and try again.');
   }
 }
 
@@ -2031,7 +2031,7 @@ function startQuizTimer(totalSeconds) {
     if (remaining <= 0) {
       clearInterval(quizTimerInterval);
       quizTimerInterval = null;
-      alert('⏰ Time is up! Your quiz will be submitted automatically.');
+      alert('â° Time is up! Your quiz will be submitted automatically.');
       submitQuizAnswers(true);
     }
   }, 1000);
@@ -2042,8 +2042,8 @@ async function confirmSubmitQuiz() {
   var total      = allQuizQuestions.length;
   var unanswered = total - answered;
 
-  var msg = '📋 Submit quiz now?\n\n✅ Answered: ' + answered + ' / ' + total;
-  if (unanswered > 0) msg += '\n⚠️ Unanswered: ' + unanswered + ' question(s)';
+  var msg = 'ðŸ“‹ Submit quiz now?\n\nâœ… Answered: ' + answered + ' / ' + total;
+  if (unanswered > 0) msg += '\nâš ï¸ Unanswered: ' + unanswered + ' question(s)';
   msg += '\n\nYou cannot change answers after submitting!';
 
   if (!confirm(msg)) return;
@@ -2090,7 +2090,7 @@ async function submitQuizAnswers(autoSubmit) {
 
     if (data.status === 'success') {
       var pct   = data.percentage || 0;
-      var grade = pct >= 80 ? '🏆 Excellent!' : pct >= 60 ? '✅ Good' : pct >= 40 ? '⚠️ Average' : '📝 Below Average';
+      var grade = pct >= 80 ? 'ðŸ† Excellent!' : pct >= 60 ? 'âœ… Good' : pct >= 40 ? 'âš ï¸ Average' : 'ðŸ“ Below Average';
       var color = pct >= 60 ? '#43e97b' : pct >= 40 ? '#f59e0b' : '#ef4444';
       showQuizResult({
         score: data.score, totalMarks: data.total_marks,
@@ -2100,12 +2100,12 @@ async function submitQuizAnswers(autoSubmit) {
       if (typeof fetchStudentNotifications === 'function') fetchStudentNotifications();
       setTimeout(function() { loadStudentQuizzes(); }, 1000);
     } else {
-      alert('❌ ' + (data.message || 'Error submitting quiz. Please try again.'));
+      alert('âŒ ' + (data.message || 'Error submitting quiz. Please try again.'));
     }
   } catch (err) {
     if (modal) modal.style.display = 'none';
     document.body.style.overflow = '';
-    alert('❌ Failed to submit quiz: ' + err.message);
+    alert('âŒ Failed to submit quiz: ' + err.message);
   }
 }
 
@@ -2121,7 +2121,7 @@ function showQuizResult(opts) {
   var total      = opts.total || 0;
   var grade      = opts.grade || '';
   var color      = opts.resultColor || '#a78bfa';
-  var emoji      = pct >= 80 ? '🎉' : pct >= 60 ? '🙂' : pct >= 40 ? '📝' : '😔';
+  var emoji      = pct >= 80 ? 'ðŸŽ‰' : pct >= 60 ? 'ðŸ™‚' : pct >= 40 ? 'ðŸ“' : 'ðŸ˜”';
 
   var overlay = document.createElement('div');
   overlay.id = 'quizResultModal';
@@ -2151,7 +2151,7 @@ function showQuizResult(opts) {
       '</div>' +
       '<button onclick="var el=document.getElementById(\'quizResultModal\');if(el)el.remove();loadStudentQuizzes();if(typeof fetchStudentNotifications===\'function\')fetchStudentNotifications();" ' +
         'style="padding:15px 40px;background:linear-gradient(135deg,#6c8fff,#a78bfa);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:800;cursor:pointer;width:100%;box-shadow:0 8px 24px rgba(108,143,255,0.35);">' +
-        '✓ Done' +
+        'âœ“ Done' +
       '</button>' +
     '</div>';
   document.body.appendChild(overlay);
@@ -2210,7 +2210,7 @@ async function loadStudentComplaints() {
             <span style="font-size:11px;color:var(--muted);">${c.submitted_at}</span>
           </div>
           <div style="font-size:14px;line-height:1.7;color:var(--text);margin-bottom:10px">${c.content}</div>
-          <div style="font-size:12px;color:var(--muted);"><i class="fas fa-user-secret"></i> Anonymous — Identity strictly protected</div>
+          <div style="font-size:12px;color:var(--muted);"><i class="fas fa-user-secret"></i> Anonymous â€” Identity strictly protected</div>
         </div>
       `).join('');
     } else {
@@ -2238,12 +2238,12 @@ async function submitStudentComplaint() {
     if (data.status === 'success') {
       document.getElementById('complaintText').value = '';
       loadStudentComplaints();
-      showToastMsg('✅ Complaint submitted anonymously!');
+      showToastMsg('âœ… Complaint submitted anonymously!');
     } else {
       alert(data.message || 'Error submitting complaint.');
     }
   } catch (e) {
-    showToastMsg('✅ Complaint submitted anonymously!');
+    showToastMsg('âœ… Complaint submitted anonymously!');
   }
 }
 
@@ -2283,7 +2283,7 @@ function toggleAcademicOverviewPanel() {
     const dept = localStorage.getItem('user_department') || 'Computer Science & Technology';
     const sem  = localStorage.getItem('user_semester')   || '5th Semester';
     const subtitle = document.getElementById('inlineAcademicSubtitle');
-    if (subtitle) subtitle.textContent = `${dept} — ${sem} (Probidhan 2022)`;
+    if (subtitle) subtitle.textContent = `${dept} â€” ${sem} (Probidhan 2022)`;
 
     const attendanceRate = parseInt(document.getElementById('statAttendance')?.textContent) || 92;
     const assignmentRate = 85;
@@ -2486,7 +2486,7 @@ async function loadStudentRoutineFiles() {
 
     if (data.status === 'success' && data.data && data.data.length > 0) {
       grid.innerHTML = data.data.map(f => {
-        const fullUrl = f.file_url.startsWith('http') ? f.file_url : 'MEDIA_BASE + f.file_url;
+        const fullUrl = f.file_url.startsWith('http') ? f.file_url : MEDIA_BASE + f.file_url;
         const isImg = f.file_type === 'image' || fullUrl.match(/\.(jpg|jpeg|png|webp|gif)/i);
 
         const previewHtml = isImg
@@ -2551,7 +2551,7 @@ async function handleUploadRoutineFile(e) {
     const data = await res.json();
     closeUploadRoutineModal();
     if (data.status === 'success') {
-      showToastMsg('✅ Routine image uploaded successfully!');
+      showToastMsg('âœ… Routine image uploaded successfully!');
       document.getElementById('uploadRoutineForm').reset();
       loadStudentRoutineFiles();
     } else {
@@ -2559,7 +2559,7 @@ async function handleUploadRoutineFile(e) {
     }
   } catch (err) {
     closeUploadRoutineModal();
-    showToastMsg('✅ Routine file uploaded!');
+    showToastMsg('âœ… Routine file uploaded!');
   }
 }
 
@@ -2585,9 +2585,9 @@ async function fetchStudentNotifications() {
       dataNotice.data.slice(0, 5).forEach(n => {
         itemsHtml += `
           <div style="padding:10px 12px; background:rgba(250,204,21,0.06); border:1px solid rgba(250,204,21,0.2); border-radius:10px; margin-bottom:8px; cursor:pointer;" onclick="showStudentSection('notice'); markStudentNotificationsRead();">
-            <div style="font-size:11px; font-weight:800; color:#facc15; text-transform:uppercase;">📢 Notice: ${n.title}</div>
+            <div style="font-size:11px; font-weight:800; color:#facc15; text-transform:uppercase;">ðŸ“¢ Notice: ${n.title}</div>
             <div style="font-size:12px; color:var(--text); margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${n.content}</div>
-            <div style="font-size:10px; color:var(--muted); margin-top:3px;">${n.date} • ${n.posted_by}</div>
+            <div style="font-size:10px; color:var(--muted); margin-top:3px;">${n.date} â€¢ ${n.posted_by}</div>
           </div>
         `;
         totalUnread++;
@@ -2602,8 +2602,8 @@ async function fetchStudentNotifications() {
       active.forEach(q => {
         itemsHtml += `
           <div style="padding:10px 12px; background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.25); border-radius:10px; margin-bottom:8px; cursor:pointer;" onclick="showStudentSection('quiz'); markStudentNotificationsRead();">
-            <div style="font-size:11px; font-weight:800; color:#f59e0b; text-transform:uppercase;">🔥 Active Quiz: ${q.title}</div>
-            <div style="font-size:12px; color:var(--text); margin-top:2px;">${q.subject} • ${q.duration_minutes} Mins</div>
+            <div style="font-size:11px; font-weight:800; color:#f59e0b; text-transform:uppercase;">ðŸ”¥ Active Quiz: ${q.title}</div>
+            <div style="font-size:12px; color:var(--text); margin-top:2px;">${q.subject} â€¢ ${q.duration_minutes} Mins</div>
           </div>
         `;
         totalUnread++;
@@ -2618,8 +2618,8 @@ async function fetchStudentNotifications() {
       pending.forEach(a => {
         itemsHtml += `
           <div style="padding:10px 12px; background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.25); border-radius:10px; margin-bottom:8px; cursor:pointer;" onclick="showStudentSection('assignment'); markStudentNotificationsRead();">
-            <div style="font-size:11px; font-weight:800; color:#f87171; text-transform:uppercase;">📌 Due Assignment: ${a.title}</div>
-            <div style="font-size:12px; color:var(--text); margin-top:2px;">Subject: ${a.subject} • Due: ${a.due_date}</div>
+            <div style="font-size:11px; font-weight:800; color:#f87171; text-transform:uppercase;">ðŸ“Œ Due Assignment: ${a.title}</div>
+            <div style="font-size:12px; color:var(--text); margin-top:2px;">Subject: ${a.subject} â€¢ Due: ${a.due_date}</div>
           </div>
         `;
         totalUnread++;

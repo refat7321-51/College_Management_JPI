@@ -1,10 +1,9 @@
-/* ====================================================
-   PUBLIC HOMEPAGE JS — Jashore Govt. Polytechnic Institute (JPI)
+﻿/* ====================================================
+   PUBLIC HOMEPAGE JS â€” Jashore Govt. Polytechnic Institute (JPI)
    ==================================================== */
 
 const _ph = window.location.hostname;
-const API = (_ph === 'localhost' || _ph === '127.0.0.1') ? `http://${_ph}:8000/api` : '/api';
-const MEDIA_BASE = (_ph === 'localhost' || _ph === '127.0.0.1') ? `http://${_ph}:8000` : '';
+const PUBLIC_API = (_ph === 'localhost' || _ph === '127.0.0.1') ? `http://${_ph}:8000/PUBLIC_API` : '/PUBLIC_API';
 let allTeachers = [];
 let selectedDepartment = 'All';
 
@@ -80,7 +79,7 @@ async function fetchPublicTeachers() {
   if (!grid) return;
 
   try {
-    const res = await fetch(`${API}/get-teachers/`);
+    const res = await fetch(`${PUBLIC_API}/get-teachers/`);
     if (!res.ok) throw new Error('Failed to fetch teacher list');
     const resData = await res.json();
     allTeachers = resData.data || resData.teachers || [];
@@ -207,7 +206,7 @@ window.resetDeptFilter = resetDeptFilter;
 // Fetch public notices for notice ticker & public grid
 async function fetchPublicNotices() {
   try {
-    const res = await fetch(`${API}/get-notices/`);
+    const res = await fetch(`${PUBLIC_API}/get-notices/`);
     if (!res.ok) return;
     const data = await res.json();
     const notices = data.notices || [];
@@ -221,7 +220,7 @@ async function fetchPublicNotices() {
             <span class="ticker-tag">${n.dept || 'All Dept'}</span>
             <strong>${n.title}:</strong> ${n.content} (${n.date || ''})
           </span>
-        `).join(' &nbsp;&nbsp;•&nbsp;&nbsp; ');
+        `).join(' &nbsp;&nbsp;â€¢&nbsp;&nbsp; ');
       } else {
         tickerTrack.innerHTML = `<span>No urgent notices at this time. Check back later for academic updates!</span>`;
       }
@@ -245,7 +244,7 @@ async function fetchPublicNotices() {
           </div>
         `).join('');
       } else {
-        publicGrid.innerHTML = `<div class="no-teachers" style="grid-column:1/-1"><p>📋 No public notices available at this moment.</p></div>`;
+        publicGrid.innerHTML = `<div class="no-teachers" style="grid-column:1/-1"><p>ðŸ“‹ No public notices available at this moment.</p></div>`;
       }
     }
   } catch (err) {
@@ -256,7 +255,7 @@ async function fetchPublicNotices() {
 // Fetch dynamic college stats (total teachers & students enrolled)
 async function fetchCollegeStats() {
   try {
-    const res = await fetch(`${API}/public/college-info/`);
+    const res = await fetch(`${PUBLIC_API}/public/college-info/`);
     if (!res.ok) return;
     const resData = await res.json();
     if (resData.status === 'success' && resData.data) {
@@ -276,7 +275,7 @@ async function fetchCollegeStats() {
   }
 }
 
-// ─── SMART NAVBAR: auto-hide on scroll down, show on scroll up ───────────
+// â”€â”€â”€ SMART NAVBAR: auto-hide on scroll down, show on scroll up â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let lastScrollY = 0;
 let scrollTimeout = null;
 
@@ -296,14 +295,14 @@ window.addEventListener('scroll', () => {
     // Only hide after we've scrolled past the navbar height (70px)
     if (currentY > 70) {
       if (currentY > lastScrollY + 8) {
-        // Scrolling DOWN → hide navbar
+        // Scrolling DOWN â†’ hide navbar
         navbar.classList.add('nav-hidden');
       } else if (currentY < lastScrollY - 4) {
-        // Scrolling UP → show navbar
+        // Scrolling UP â†’ show navbar
         navbar.classList.remove('nav-hidden');
       }
     } else {
-      // Near top → always show
+      // Near top â†’ always show
       navbar.classList.remove('nav-hidden');
     }
   }
@@ -325,7 +324,7 @@ window.addEventListener('scroll', () => {
   scrollTimeout = setTimeout(updateActiveNavLink, 60);
 });
 
-// ─── SCROLL SPY: highlight active nav link based on visible section ───────
+// â”€â”€â”€ SCROLL SPY: highlight active nav link based on visible section â”€â”€â”€â”€â”€â”€â”€
 const NAV_SECTIONS = [
   { id: 'home',            href: '#home' },
   { id: 'departments',     href: '#departments' },
@@ -357,7 +356,7 @@ function updateActiveNavLink() {
   });
 }
 
-// ─── SCROLL TO SECTION: smooth scroll keeping navbar offset ───────────────
+// â”€â”€â”€ SCROLL TO SECTION: smooth scroll keeping navbar offset â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function scrollToSection(sectionId, event) {
   if (event) event.preventDefault();
   const el = document.getElementById(sectionId);
@@ -372,14 +371,14 @@ function scrollToSection(sectionId, event) {
 }
 window.scrollToSection = scrollToSection;
 
-// ─── MOBILE MENU TOGGLE ───────────────────────────────────────────────────
+// â”€â”€â”€ MOBILE MENU TOGGLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
   if (menu) menu.classList.toggle('open');
 }
 window.toggleMobileMenu = toggleMobileMenu;
 
-// ─── SCROLL REVEAL: fade-in sections as they enter viewport ───────────────
+// â”€â”€â”€ SCROLL REVEAL: fade-in sections as they enter viewport â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function initScrollReveal() {
   if (!('IntersectionObserver' in window)) return;
   const observer = new IntersectionObserver((entries) => {
@@ -401,7 +400,7 @@ function initScrollReveal() {
   });
 }
 
-// ─── GLOBAL INIT ─────────────────────────────────────────────────────────
+// â”€â”€â”€ GLOBAL INIT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.addEventListener('DOMContentLoaded', () => {
   fetchCollegeStats();
   fetchPublicTeachers();
@@ -412,13 +411,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ============================================================
-// PUBLIC SEMESTER BOOKS DIRECTORY (Probidhan 2022 — 1st to 8th Semester)
+// PUBLIC SEMESTER BOOKS DIRECTORY (Probidhan 2022 â€” 1st to 8th Semester)
 // ============================================================
 
 const PROBIDHAN_2022_DATA = {
-  // ─── COMPUTER SCIENCE & TECHNOLOGY (Technology Code: 85) ───────────────
+  // â”€â”€â”€ COMPUTER SCIENCE & TECHNOLOGY (Technology Code: 85) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   'computer': {
-    deptName: 'Computer Science & Technology — Technology Code: 85 (Probidhan 2022)',
+    deptName: 'Computer Science & Technology â€” Technology Code: 85 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -493,9 +492,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // ─── CIVIL TECHNOLOGY (Technology Code: 64) ───────────────────────────────
+  // â”€â”€â”€ CIVIL TECHNOLOGY (Technology Code: 64) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   'civil': {
-    deptName: 'Civil Technology — Technology Code: 64 (Probidhan 2022)',
+    deptName: 'Civil Technology â€” Technology Code: 64 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -572,9 +571,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // ─── ELECTRICAL TECHNOLOGY (Technology Code: 67) ──────────────────────────
+  // â”€â”€â”€ ELECTRICAL TECHNOLOGY (Technology Code: 67) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   'electrical': {
-    deptName: 'Electrical Technology — Technology Code: 67 (Probidhan 2022)',
+    deptName: 'Electrical Technology â€” Technology Code: 67 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -646,9 +645,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // ─── TELECOMMUNICATION TECHNOLOGY (Technology Code: 94) ───────────────────
+  // â”€â”€â”€ TELECOMMUNICATION TECHNOLOGY (Technology Code: 94) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   'telecom': {
-    deptName: 'Telecommunication Technology — Technology Code: 94 (Probidhan 2022)',
+    deptName: 'Telecommunication Technology â€” Technology Code: 94 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -720,9 +719,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // ─── MECHANICAL TECHNOLOGY (Technology Code: 70) ──────────────────────────
+  // â”€â”€â”€ MECHANICAL TECHNOLOGY (Technology Code: 70) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   'mechanical': {
-    deptName: 'Mechanical Technology — Technology Code: 70 (Probidhan 2022)',
+    deptName: 'Mechanical Technology â€” Technology Code: 70 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -795,9 +794,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // ─── POWER TECHNOLOGY (Technology Code: 71) ───────────────────────────────
+  // â”€â”€â”€ POWER TECHNOLOGY (Technology Code: 71) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   'power': {
-    deptName: 'Power Technology — Technology Code: 71 (Probidhan 2022)',
+    deptName: 'Power Technology â€” Technology Code: 71 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
@@ -870,9 +869,9 @@ const PROBIDHAN_2022_DATA = {
     }
   },
 
-  // ─── ELECTRONICS TECHNOLOGY (Technology Code: 68) ─────────────────────────
+  // â”€â”€â”€ ELECTRONICS TECHNOLOGY (Technology Code: 68) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   'electronics': {
-    deptName: 'Electronics Technology — Technology Code: 68 (Probidhan 2022)',
+    deptName: 'Electronics Technology â€” Technology Code: 68 (Probidhan 2022)',
     probidhan: 'Probidhan 2022',
     semesters: {
       '1st Semester': [
