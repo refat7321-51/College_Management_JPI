@@ -1,4 +1,4 @@
-﻿/**
+/**
  * TEACHER DASHBOARD LOGIC
  */
 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('welcomeText').textContent = `Welcome, ${userName}!`;
 
     if (userPhoto) {
-        document.querySelector('.profile-img').innerHTML = `<img src="${MEDIA_BASE}${userPhoto}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
+        document.querySelector('.profile-img').innerHTML = `<img src="${userPhoto.startsWith('http') ? userPhoto : MEDIA_BASE + userPhoto}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
     }
     
     // Set default date to today
@@ -144,7 +144,7 @@ async function fetchStudents() {
                 <tr onclick="showStudentOverview(${s.id})" style="cursor: pointer;">
                     <td>
                         <div class="profile-img" style="width:32px; height:32px;">
-                            ${s.profile_picture ? `<img src="${MEDIA_BASE}${s.profile_picture}?t=${new Date().getTime()}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">` : `<i class="fas fa-user"></i>`}
+                            ${s.profile_picture ? `<img src="${s.profile_picture.startsWith('http') ? s.profile_picture : MEDIA_BASE + s.profile_picture}?t=${new Date().getTime()}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">` : `<i class="fas fa-user"></i>`}
                         </div>
                     </td>
                     <td>${s.roll || '--'}</td>
@@ -186,7 +186,7 @@ async function showTeacherOverview(email) {
             
             body.innerHTML = `
                 <div class="overview-profile">
-                    ${t.profile_picture ? `<img src="${MEDIA_BASE}${t.profile_picture}" style="border: 3px solid ${dc}; box-shadow: 0 0 25px ${theme.glow};">` : `<div class="profile-img" style="width:110px; height:110px; border: 3px solid ${dc}; box-shadow: 0 0 25px ${theme.glow}; background: rgba(0,0,0,0.3);"><i class="fas ${theme.icon}" style="font-size: 48px; color: ${dc};"></i></div>`}
+                    ${t.profile_picture ? `<img src="${t.profile_picture.startsWith('http') ? t.profile_picture : MEDIA_BASE + t.profile_picture}" style="border: 3px solid ${dc}; box-shadow: 0 0 25px ${theme.glow};">` : `<div class="profile-img" style="width:110px; height:110px; border: 3px solid ${dc}; box-shadow: 0 0 25px ${theme.glow}; background: rgba(0,0,0,0.3);"><i class="fas ${theme.icon}" style="font-size: 48px; color: ${dc};"></i></div>`}
                     <div>
                         <h4 style="color: var(--text); font-size: 26px; margin-bottom: 6px;">${t.name}</h4>
                         ${t.mobile ? `
@@ -283,7 +283,7 @@ async function showStudentOverview(studentId) {
             
             body.innerHTML = `
                 <div class="overview-profile">
-                    ${s.profile_picture ? `<img src="${MEDIA_BASE}${s.profile_picture}?t=${new Date().getTime()}">` : `<div class="profile-img" style="width:100px; height:100px;"><i class="fas fa-user" style="font-size: 40px;"></i></div>`}
+                    ${s.profile_picture ? `<img src="${s.profile_picture.startsWith('http') ? s.profile_picture : MEDIA_BASE + s.profile_picture}?t=${new Date().getTime()}">` : `<div class="profile-img" style="width:100px; height:100px;"><i class="fas fa-user" style="font-size: 40px;"></i></div>`}
                     <div>
                         <h4 style="color: var(--text);">${s.name}</h4>
                         <span style="display: block; font-size: 13px; color: var(--accent2); margin-bottom: 8px;">${s.email}</span>
@@ -386,7 +386,7 @@ function handleRollSearch(event) {
                     suggestions.innerHTML = studentMatches.map(s => `
                         <div class="suggestion-item" onclick="selectRollSuggestion('${s.roll}', ${s.id})">
                              <div class="profile-img" style="width:24px; height:24px; font-size:12px;">
-                                ${s.profile_picture ? `<img src="${MEDIA_BASE}${s.profile_picture}" style="border-radius:50%;">` : `<i class="fas fa-user"></i>`}
+                                ${s.profile_picture ? `<img src="${s.profile_picture.startsWith('http') ? s.profile_picture : MEDIA_BASE + s.profile_picture}" style="border-radius:50%;">` : `<i class="fas fa-user"></i>`}
                             </div>
                             <div class="s-info">
                                 <span class="s-name" style="font-size: 13px;">${s.name}</span>
@@ -580,7 +580,7 @@ function renderTeacherGrid(teachers) {
             <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: ${dc}; border-top-left-radius: 20px; border-top-right-radius: 20px;"></div>
             <div style="position: relative; display: inline-block; margin-bottom: 14px;">
                 ${t.profile_picture 
-                    ? `<img src="${MEDIA_BASE}${t.profile_picture}" style="border: 3px solid ${dc}; box-shadow: 0 0 20px ${theme.glow};">` 
+                    ? `<img src="${t.profile_picture.startsWith('http') ? t.profile_picture : MEDIA_BASE + t.profile_picture}" style="border: 3px solid ${dc}; box-shadow: 0 0 20px ${theme.glow};">` 
                     : `<div class="profile-img" style="width:86px; height:86px; margin: 0 auto; border: 3px solid ${dc}; box-shadow: 0 0 20px ${theme.glow}; background: rgba(0,0,0,0.3);"><i class="fas ${theme.icon}" style="font-size: 36px; color: ${dc};"></i></div>`}
             </div>
             <span class="t-name" style="font-size: 16px; font-weight: 700;">${t.name}</span>
@@ -772,7 +772,7 @@ function handleGlobalSearch(event) {
             if (result.status === 'success' && result.data.length > 0) {
                 suggestions.innerHTML = result.data.map(item => `
                     <div class="suggestion-item" onclick="viewSearchResult(${JSON.stringify(item).replace(/"/g, '&quot;')})">
-                        ${item.profile_picture ? `<img src="${MEDIA_BASE}${item.profile_picture}">` : `<i class="fas fa-user"></i>`}
+                        ${item.profile_picture ? `<img src="${item.profile_picture.startsWith('http') ? item.profile_picture : MEDIA_BASE + item.profile_picture}">` : `<i class="fas fa-user"></i>`}
                         <div class="s-info">
                             <span class="s-name">${item.name}</span>
                             <span class="s-meta">${item.role === 'student' ? `Roll: ${item.roll}` : `Faculty Member`}</span>
@@ -834,12 +834,12 @@ async function fetchProfileData() {
 
             if (data.profile_picture) {
                 const preview = document.getElementById('profilePreview');
-                preview.src = `${MEDIA_BASE}${data.profile_picture}`;
+                preview.src = data.profile_picture.startsWith('http') ? data.profile_picture : MEDIA_BASE + data.profile_picture;
                 preview.style.display = 'block';
                 document.getElementById('profilePlaceholder').style.display = 'none';
                 
                 // Also update topbar
-                document.querySelector('.profile-img').innerHTML = `<img src="${MEDIA_BASE}${data.profile_picture}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
+                document.querySelector('.profile-img').innerHTML = `<img src="${data.profile_picture.startsWith('http') ? data.profile_picture : MEDIA_BASE + data.profile_picture}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
             }
         }
     } catch (err) {
@@ -896,7 +896,7 @@ async function updateProfile() {
             // Sync UI
             document.getElementById('topbarUserName').textContent = localStorage.getItem('user_name');
             if (result.data.profile_picture) {
-                document.querySelector('.profile-img').innerHTML = `<img src="${MEDIA_BASE}${result.data.profile_picture}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
+                document.querySelector('.profile-img').innerHTML = `<img src="${result.data.profile_picture.startsWith('http') ? result.data.profile_picture : MEDIA_BASE + result.data.profile_picture}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
             }
         } else {
             showToast(result.message, 'error');
